@@ -1,0 +1,17 @@
+name = "planning-simplified-proxy"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Replace with your GitHub Pages address, no trailing slash. Add more with commas.
+ALLOWED_ORIGINS = "https://rarmunn-dotcom.github.io"
+MODEL = "claude-sonnet-5-5"
+
+# Per-visitor limit: 6 requests a minute from one location. Period can only be 10 or 60.
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 6
+  period = 60
