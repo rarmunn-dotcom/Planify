@@ -982,7 +982,7 @@ function renderResults(data, ctx) {
   const warns = [];
   if (ctx.omitted?.length) {
     const pn = ctx.omitted.reduce((n, x) => n + (x.to - x.from + 1), 0), fn = ctx.omitted.length;
-    warns.push(`<p>${pn} ${pn === 1 ? "page" : "pages"} in ${fn} ${fn === 1 ? "file was" : "files were"} too long to read.</p><details class="warnmore"><summary>Show which pages</summary><p>${esc(ctx.omitted.map(x => `${x.label} pages ${x.from}\u2013${x.to}`).join("; "))}.</p></details>`);
+    warns.push(`<p>${ctx.pagesTotal ? `${ctx.pagesTotal - pn} of ${ctx.pagesTotal} pages were read. ${pn} ${pn === 1 ? "was" : "were"} left out because the documents are too long to read in one go.` : `${pn} ${pn === 1 ? "page" : "pages"} in ${fn} ${fn === 1 ? "file was" : "files were"} too long to read.`}</p><details class="warnmore"><summary>Show which pages</summary><p>${esc(ctx.omitted.map(x => `${x.label} pages ${x.from}\u2013${x.to}`).join("; "))}.</p></details>`);
   }
   if (ctx.unreadable?.length) warns.push(`<p>${esc("These files had no readable text and were not read: " + ctx.unreadable.join(", ") + ".")}</p>`);
   $("read-warn").hidden = !warns.length;
@@ -1339,7 +1339,18 @@ $("side").addEventListener("click", e => {
 });
 $("homebox").addEventListener("click", e => { if (e.target.closest("[data-back]")) { show("upload"); setTimeout(() => $("pc").focus(), 0); } });
 $("see-example").addEventListener("click", e => { e.preventDefault(); renderResults(EXAMPLE, { example: true }); show("results"); });
-$("back").addEventListener("click", e => { e.preventDefault(); show("upload"); });
+$("back").addEventListener("click", e => {
+  e.preventDefault();
+  chatRun?.abort(); chatRun = null;
+  show("upload");
+  docs.length = 0; showFiles = false;
+  $("pdfs").value = "";
+  $("analyse-msg").hidden = true;
+  CHAT.text = ""; CHAT.history = []; CHAT.home = null; R.home = undefined;
+  $("home-clear").click();
+  render();
+  window.scrollTo(0, 0);
+});
 show("upload");
 
 // ---------- Upload ----------
@@ -2129,13 +2140,13 @@ function collectText(budget) {
   let text = "";
   // Key documents (form, receipt, covering letter, notices, statements) are read first and in full, up to a cap each.
   const sum = p => p.sizes.reduce((a, b) => a + b, 0);
-  const KEY = /form|receipt|cover|letter|notice|statement|decision/i;
+  const KEY = /^(?!.*redacted)(?=.*(form|receipt|cover|letter|notice|decision|daylight|sunlight|noise|acoustic|arbor|tree|transport|construction|design access|planning statement))/i;
   const shares = new Map();
   if (total <= budget) parts.forEach(p => shares.set(p, Infinity));
   else {
     const A = parts.filter(p => KEY.test(p.label)), B = parts.filter(p => !KEY.test(p.label));
     let aUsed = 0;
-    for (const p of A) { const g = Math.max(0, Math.min(sum(p), budget * 0.12, budget * 0.6 - aUsed)); shares.set(p, g); aUsed += g; }
+    for (const p of A) { const g = Math.max(0, Math.min(sum(p), budget * 0.07, budget * 0.7 - aUsed)); shares.set(p, g); aUsed += g; }
     const bTotal = B.reduce((n, p) => n + sum(p), 0);
     const rest = budget - aUsed;
     if (rest >= bTotal) {
@@ -2155,7 +2166,7 @@ function collectText(budget) {
     }
     if (cut) omitted.push({ label: p.label, from: cut, to: p.pages.length });
   }
-  return { text, omitted, unreadable: unreadableNames() };
+  return { text, omitted, unreadable: unreadableNames(), pagesTotal: parts.reduce((n, p) => n + p.pages.length, 0) };
 }
 
 const ERRORS = {
@@ -2183,7 +2194,7 @@ $("analyse").addEventListener("click", async () => {
   const limits = await sample.limits().catch(() => null);
   const max = limits?.maxPromptBytes || 262144;
   const promptOverhead = new TextEncoder().encode(buildPrompt("", ["x".repeat(400)], homeSnap)).length;
-  const { text, omitted, unreadable } = collectText(max - promptOverhead - 2048);
+  const { text, omitted, unreadable, pagesTotal } = collectText(max - promptOverhead - 2048);
   const notes = [];
   if (omitted.length) notes.push("Some pages were left out for length: " + omitted.map(o => `${o.label} pages ${o.from}-${o.to}`).join("; ") + ".");
   if (unreadable.length) notes.push("These files were provided but had no readable text: " + unreadable.join(", ") + ". Don't list them as missing.");
@@ -2200,7 +2211,7 @@ $("analyse").addEventListener("click", async () => {
     const data = normalise(raw, homeSnap);
     if (!data.overview.reference) data.overview.reference = findRef();
     if (data.home) await locateHome(data);
-    renderResults(data, { example: false, omitted, unreadable, docText: text, notes });
+    renderResults(data, { example: false, omitted, unreadable, pagesTotal, docText: text, notes });
     show("results");
   } catch (e) {
     const code = e?.code;
