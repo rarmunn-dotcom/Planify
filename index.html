@@ -670,6 +670,7 @@ html, body, body.res, body.res::before, .appbar, body.res .appbar { background: 
 body.res { --bg: #fffefa; --surface: #fffefa; --reading-bg: #fffefa; }
 body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35, .06); }
 @media print {
+  .appbar { position: static !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   #addr-launch, #chat-launch, #council-launch { display: none !important; }
 }
@@ -1221,7 +1222,7 @@ function normalise(raw, home) {
   }).filter(e => e.label);
   if (home) {
     const h = r.home || {};
-    out.home = { address: home.address, postcode: home.postcode, area: home.area, lat: home.lat, lng: home.lng, geo: home.geo, distance_m: null, direction: null,
+    out.home = { address: tidyAddr(home.address), postcode: home.postcode, area: home.area, lat: home.lat, lng: home.lng, geo: home.geo, distance_m: null, direction: null,
       summary: str(h.summary),
       street_named: h.street_named === true, number_named: h.number_named === true,
       is_site: h.is_site === true || siteMatch(home.address, out.overview.address),
@@ -2094,6 +2095,10 @@ function findRef() {
     if (best) return best[0];
   }
   return "";
+}
+function tidyAddr(a) {
+  a = String(a || "");
+  return a === a.toLowerCase() ? a.replace(/\b([a-z])/g, c => c.toUpperCase()) : a;
 }
 function plainText(t) {
   return String(t || "").replace(/[ \t ]{2,}/g, "  ").replace(/\n[ \t]+/g, "\n").replace(/\n{3,}/g, "\n\n");
