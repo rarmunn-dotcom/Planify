@@ -1896,17 +1896,17 @@ async function downloadPdf() {
   const head = t => { y += 4; if (y + 12 > BOTTOM) { doc.addPage(); y = M; } put(t, 13, "bold", [53, 80, 48], 2); };
   const point = s => {
     const x = srcText(s.src);
-    put((s.basis === "stated" ? "From the documents: " : "AI interpretation: ") + s.t, 10, "normal", [40, 36, 30], 0.2, "helvetica", 3);
-    put(x.text, 8, "normal", [110, 100, 85], 2.2, "courier", 3);
+    put((s.basis === "stated" ? "From the documents: " : "AI interpretation: ") + s.t, 10, "normal", [40, 36, 30], x.gone ? 0.2 : 2.2, "helvetica", 3);
+    if (x.gone) put(x.text, 8, "normal", [110, 100, 85], 2.2, "courier", 3);
   };
   put("Planify", 9, "bold", [53, 80, 48], 1);
   put(o.address || o.name || "Planning application", 18, "bold", [40, 36, 30], 1);
   put("Planning application number: " + (o.reference || "not found in the documents"), 9, "normal", [110, 100, 85], 3, "courier");
   put("AI summary: " + (o.one_liner || ""), 11, "normal", [40, 36, 30], 2);
-  (o.headline_facts || []).forEach(f => { put(f.label + ": " + f.value, 10, "bold", [40, 36, 30], 0); put(f.src || "Source not given", 8, "normal", [110, 100, 85], 1.5, "courier", 3); });
+  (o.headline_facts || []).forEach(f => { put(f.label + ": " + f.value, 10, "bold", [40, 36, 30], 1.5); });
 
   head("Key dates");
-  d.key_dates.forEach(k => { put((DATE_LABELS[k.id] || k.label) + ": " + (k.date ? fmtDate(k.date) : "not stated in the documents") + (k.id === "comments_close" && k.date ? " (" + daysText(daysUntil(k.date)) + ")" : ""), 10, "normal", [40, 36, 30], 0); if (k.date) put(k.src || "Source not given", 8, "normal", [110, 100, 85], 1.5, "courier", 3); });
+  d.key_dates.forEach(k => { put((DATE_LABELS[k.id] || k.label) + ": " + (k.date ? fmtDate(k.date) : "not stated in the documents") + (k.id === "comments_close" && k.date ? " (" + daysText(daysUntil(k.date)) + ")" : ""), 10, "normal", [40, 36, 30], 1.5); });
 
   if (d.home && !d.home.sample) {
     head("Your address");
@@ -1929,7 +1929,7 @@ async function downloadPdf() {
   }
   if ((d.differences || []).length) {
     head("Where the documents disagree");
-    d.differences.forEach(x => { put(x.what + ": " + x.versions, 10, "normal", [40, 36, 30], 0); put(x.src || "", 8, "normal", [110, 100, 85], 2, "courier", 3); });
+    d.differences.forEach(x => { put(x.what + ": " + x.versions, 10, "normal", [40, 36, 30], 2); });
   }
   head("Not in the application");
   if ((d.missing_items || []).length) d.missing_items.forEach(m => { put(m.item, 10, "bold", [138, 90, 0], 0); put(m.why_it_matters, 10, "normal", [40, 36, 30], 2, "helvetica", 3); });
