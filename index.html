@@ -1875,7 +1875,7 @@ const docs = [];
 let nextId = 1;
 let running = null;     // AbortController while an analysis runs
 // The address of the proxy that calls Claude. Set this after you deploy the worker (see README).
-const PROXY_URL = "https://planify.rarmunn.workers.dev";
+const PROXY_URL = "https://planify2.rarmunn.workers.dev";
 function makeProxySample(url) {
   const fail = (code) => Object.assign(new Error(code), { code });
   const parse = text => {
