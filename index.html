@@ -786,6 +786,49 @@ details.howto > .legend { margin-top: 14px; }
 #draw-dlg .dlg-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e7dec9; position: sticky; top: 0; background: #fff; }
 #draw-dlg .dlg-body { overflow: auto; max-height: calc(94vh - 52px); max-width: 96vw; }
 @media print { #drawings-sec { display: none; } }
+details.howto .section-head p, details.howto .legend p, details.howto .legend b, details.howto .legend .tag, details.howto .legend mark, details.howto .legend .fig, details.howto .legend-note p, body.r2.res details.howto .legend p { font-size: var(--t2, .875rem); line-height: 1.5; font-weight: 400; letter-spacing: 0; text-transform: none; }
+details.howto .legend b:not(.fig) { font-weight: 600; }
+details.howto .legend .tag { font-weight: 600; }
+details.howto .legend > div, details.howto .legend > div.legend-note { padding: 12px 18px; gap: 16px; align-items: center; background: #fffefa; }
+details.howto .legend > div { grid-template-columns: 11.5rem minmax(0, 1fr); }
+details.howto .legend .tag { white-space: nowrap; }
+details.howto .legend > div.legend-note { grid-template-columns: 11.5rem minmax(0, 1fr); }
+details.howto .legend > div.legend-note p { grid-column: 2; }
+details.howto .legend .warnbox { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 16px; align-items: center; }
+details.howto .legend .warnbox > div { display: block; }
+details.howto .legend .warnbox svg { margin: 0; justify-self: start; }
+@media (max-width: 560px) { details.howto .legend > div, details.howto .legend > div.legend-note, details.howto .legend .warnbox { grid-template-columns: minmax(0, 1fr); gap: 6px; } details.howto .legend > div.legend-note p { grid-column: 1; } }
+details.howto .legend p { margin: 0; }
+details.howto .legend .warnbox { padding: 12px 18px; }
+details.howto .legend .warnbox p { font-size: var(--t2, .875rem); }
+.refbtn { font: inherit; font-family: var(--ref, "IBM Plex Mono", ui-monospace, Menlo, monospace); font-size: inherit; color: #2f4a2a; background: none; border: 0; padding: 0; margin: 0 10px 0 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left; }
+.refbtn:hover { color: #1d3319; }
+.refbtn:focus-visible { outline: 3px solid #355030; outline-offset: 2px; border-radius: 4px; }
+#draw-dlg .pv-text { place-self: stretch; text-align: left; padding: 14px 18px 20px; background: #fff; border-top: 1px solid #e7dec9; }
+#draw-dlg .pv-text h4 { margin: 0 0 8px; font-size: .8125rem; color: var(--muted); font-weight: 600; }
+#draw-dlg .pv-text pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .9375rem; line-height: 1.55; }
+#draw-dlg .dlg-body.has-text img { max-height: 58vh; }
+#draw-dlg .dlg-body.has-text.zoom img { max-height: none; }
+#pane-find:not([hidden]), #pane-docs:not([hidden]) { display: grid; gap: 48px; min-width: 0; }
+footer .wrap { justify-content: flex-start !important; padding-bottom: 96px !important; }
+footer #foot-note { order: -1; }
+#analysed { display: none !important; }
+body.r2.res details.howto .legend .tag, body.r2.res details.howto .legend mark, details.howto .legend .tag, details.howto .legend mark { font-weight: 500; font-size: var(--t2, .875rem); line-height: 1.4; }
+details.howto .legend b.fig { font-weight: 700; }
+.prop .pfact { display: grid; grid-template-columns: 13rem minmax(0, 1fr) auto; column-gap: 16px; align-items: center; }
+.prop .pfact .eyebrow { grid-column: 1; grid-row: 1; }
+.prop .pfact b { grid-column: 2; grid-row: 1; }
+.prop .pfact .pj-s { grid-column: 3; grid-row: 1; text-align: right; justify-self: end; white-space: nowrap; }
+@media (max-width: 640px) { .prop .pfact { grid-template-columns: minmax(0, 1fr) auto; } .prop .pfact .eyebrow { grid-column: 1 / -1; } .prop .pfact b { grid-column: 1; grid-row: 2; } .prop .pfact .pj-s { grid-column: 2; grid-row: 2; } }
+footer { display: none !important; }
+body.res .wrap.layout { padding-bottom: 96px; }
+#foot-note { margin-top: 12px; }
+.float-toggle { font: inherit; font-size: .8125rem; font-weight: 500; justify-self: end; padding: 6px 14px; border: 1px solid #cfe5d7; border-radius: 999px; background: #fffefa; color: #355030; cursor: pointer; box-shadow: 0 4px 14px rgba(45, 41, 35, .12); }
+.float-toggle:hover { background: #fff; }
+.chatfloat:has(.chat-panel:not([hidden])) .float-toggle { display: none; }
+.chatfloat.collapsed .chat-launch { display: none !important; }
+.chatfloat.collapsed { gap: 0; }
+@media print { .float-toggle { display: none !important; } }
 </style>
 
 <nav class="appbar" aria-label="App">
@@ -883,7 +926,6 @@ details.howto > .legend { margin-top: 14px; }
     <section class="prop" aria-label="What is proposed">
       <span class="eyebrow">What is proposed <span class="sumnote">(AI summary)</span></span>
       <p class="prop-lead" id="oneliner"></p>
-      <p class="smallnote" id="sumnote">A short summary written by AI from the documents. The key details below come from the documents.</p>
       <div class="pfacts" id="facts"></div>
     </section>
   </div>
@@ -901,7 +943,7 @@ details.howto > .legend { margin-top: 14px; }
 
     <div class="pane-tabs" id="pane-tabs" role="tablist" aria-label="Page sections" hidden>
       <button type="button" role="tab" id="ptab-find" aria-selected="true" data-pane="find">What the documents say</button>
-      <button type="button" role="tab" id="ptab-docs" aria-selected="false" data-pane="docs">Documents</button>
+      <button type="button" role="tab" id="ptab-docs" aria-selected="false" data-pane="docs">Drawings</button>
     </div>
     <div id="pane-docs" role="tabpanel" aria-labelledby="ptab-docs" hidden>
     <section id="drawings-sec" aria-labelledby="h-drawings" hidden>
@@ -938,7 +980,7 @@ details.howto > .legend { margin-top: 14px; }
     <section class="extra-sec" id="diff-sec" aria-labelledby="h-diff" hidden>
       <div class="section-head">
         <h2 id="h-diff">Where the documents disagree</h2>
-        <p>The same figure or fact is given differently in different places. The documents do not say which is right.</p>
+        <p class="wide">The same figure or fact is given differently in different places. The documents do not say which is right.</p>
       </div>
       <div class="diffs" id="diffs"></div>
     </section>
@@ -962,23 +1004,19 @@ details.howto > .legend { margin-top: 14px; }
     </div>
     <section aria-labelledby="h-read">
       <details class="howto"><summary><h2 id="h-read">How to read this page</h2></summary>
-      <div class="section-head">
-        <p>Every line below is taken from the application documents and names its source page. Nothing here is a judgement on whether the scheme is good or bad.</p>
-      </div>
       <div class="legend">
         <div><span class="tag stated">From the documents</span><p>The documents say this in writing, or clearly say nothing about it.</p></div>
         <div><span class="tag reading">AI interpretation</span><p>Our interpretation of the drawings and plans. Check the source if it matters to you.</p></div>
         <div><mark class="grn">Green</mark><p>The main finding for a topic, in the topic tabs.</p></div>
         <div><mark class="amb">Amber</mark><p>Something missing, not covered or below the recommended standard.</p></div>
         <div><b class="fig">Bold</b><p>Figures, such as sizes, counts and percentages.</p></div>
-        <div><span class="rs" style="font-family: var(--ref)">p.12</span><p>Page references are in a typewriter font.</p></div>
         <div id="read-warn" class="warnbox" hidden></div>
         <div><span class="meter strong"><i></i><i></i></span><p><b>Well covered.</b> The documents assess this topic in detail.</p></div>
         <div><span class="meter partial"><i></i><i></i></span><p><b>Partly covered.</b> The topic is mentioned, or only partly assessed.</p></div>
         <div><span class="meter none"><i></i><i></i></span><p><b>Not covered.</b> The documents say nothing about it. That does not mean there is no impact.</p></div>
-        <div class="legend-note"><p>The coverage boxes show how much the documents say about a topic. They do not measure harm or benefit.</p></div>
       </div>
       </details>
+      <p class="smallnote" id="foot-note"></p>
     </section>
 
   </div>
@@ -987,6 +1025,7 @@ details.howto > .legend { margin-top: 14px; }
 </main>
 
 <div class="chatfloat" id="chat-float">
+  <button type="button" class="float-toggle" id="float-toggle" aria-expanded="true" aria-controls="chat-float">Hide buttons</button>
   <section class="chat-panel addr-panel" id="addr-panel" role="dialog" aria-label="Add your address" hidden>
     <div class="chat-top"><b>Your address</b><button type="button" id="addr-close" aria-label="Close">&times;</button></div>
     <div class="chat-body" id="addr-body"></div>
@@ -1017,7 +1056,7 @@ details.howto > .legend { margin-top: 14px; }
   </section>
 </div>
 
-<footer><div class="wrap"><span id="analysed"></span><span id="foot-note"></span></div></footer>
+<footer hidden><div class="wrap"><span id="analysed"></span></div></footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -1720,6 +1759,41 @@ document.addEventListener("click", e => {
   const p = e.target.closest("#alldocs-sec [data-prev]");
   if (p) { const d = ($("doclist")._list || [])[+p.dataset.prev]; if (d) openPreview(d, 1, docTitle(d)); }
 });
+// ===== Layer 26: document references =====
+function parseRefs(text) {
+  const out = [];
+  String(text || "").split(/\s*;\s*/).forEach(seg => {
+    seg.split(/,\s*(?=[A-Za-z])/).forEach(part => {
+      const m = part.trim().match(/^(.+?)\s+pp?\.\s*(\d+)/i);
+      if (m) out.push({ label: m[1].replace(/^[\s(]+/, "").trim(), page: +m[2] });
+    });
+  });
+  return out;
+}
+function linkRefs() {
+  if (!RC || RC.example || RC.saved || !RC.docByLabel) return;
+  document.querySelectorAll("main .src:not([data-ref]), main .rs:not([data-ref]), main .pj-s:not([data-ref]), main .tl-src:not([data-ref]), .prop .pj-s:not([data-ref]), .prop .src:not([data-ref]), .prop .rs:not([data-ref])").forEach(el => {
+    if (el.closest("#drawings-sec")) return;
+    el.setAttribute("data-ref", "1");
+    const refs = parseRefs(el.textContent).map(r => ({ r, d: findDocFor(r.label, RC.docByLabel) })).filter(x => x.d && x.d.file && x.r.page >= 1 && x.r.page <= x.d.pages);
+    if (!refs.length) return;
+    el.innerHTML = refs.map((x, i) => `<button type="button" class="refbtn" data-rdoc="${docs.indexOf(x.d)}" data-rpage="${x.r.page}" title="Open the page this comes from">Document reference${refs.length > 1 ? " " + (i + 1) : ""}</button>`).join("");
+  });
+}
+let linkQueued = false;
+new MutationObserver(() => { if (linkQueued) return; linkQueued = true; requestAnimationFrame(() => { linkQueued = false; try { linkRefs(); } catch (e) {} }); }).observe(document.body, { childList: true, subtree: true });
+document.addEventListener("click", e => {
+  const b = e.target.closest(".refbtn"); if (!b) return;
+  const d = docs[+b.dataset.rdoc]; if (!d) return;
+  openPreview(d, +b.dataset.rpage, cleanName(d.name, docs.indexOf(d)));
+});
+// ===== Layer 26b: collapsible buttons =====
+$("float-toggle").addEventListener("click", () => {
+  const f = $("chat-float"), off = !f.classList.contains("collapsed");
+  f.classList.toggle("collapsed", off);
+  $("float-toggle").setAttribute("aria-expanded", String(!off));
+  $("float-toggle").textContent = off ? "Show buttons" : "Hide buttons";
+});
 // ===== Layer 22 helpers =====
 document.body.classList.add("r2");
 
@@ -1963,7 +2037,34 @@ function cleanName(name, i) {
   if (words.every(w => w === w.toUpperCase()) || words.every(w => w === w.toLowerCase())) {
     words = words.map((w, k) => k && SMALL_WORDS.has(w.toLowerCase()) ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
   }
-  return words.join(" ") || `Document ${i + 1}`;
+  const w = words.join(" ");
+  if (w) return w;
+  const d = docs[i];
+  return (d && guessTitle(d)) || `Document ${i + 1}`;
+}
+const TITLE_RE = /\b(statement|assessment|report|survey|appraisal|schedule|strategy|study|notice|letter|form|plans?|drawings?|elevations?|sections?|layout|specification|certificate|calculations?|analysis|proposal|summary|design|application)\b/i;
+const PHRASE_RE = /design\s+and\s+access\s+statement|planning\s+statement|heritage\s+(?:statement|impact\s+assessment)|flood\s+risk\s+assessment|(?:daylight|sunlight)(?:\s+and\s+(?:daylight|sunlight))?\s+(?:assessment|report|study)|noise\s+(?:impact\s+)?assessment|transport\s+(?:statement|assessment)|construction\s+(?:management|traffic)\s+plan|arboricultural\s+(?:impact\s+)?(?:assessment|report)|energy\s+statement|sustainability\s+statement|application\s+form|covering\s+letter|decision\s+notice|ecology\s+(?:report|appraisal)|drainage\s+strategy|basement\s+impact\s+assessment|statement\s+of\s+community\s+involvement/i;
+function guessTitle(d) {
+  if (d.guess !== undefined) return d.guess;
+  let g = "";
+  if (d.ai && d.ai.title && !/not legible/i.test(d.ai.title)) g = d.ai.title;
+  else if (d.text && d.text.length) {
+    const lines = String(d.text[0] || "").split(/\n| {3,}/).map(s => s.replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 25);
+    const ok = s => s.length >= 8 && s.length <= 70 && (s.match(/[A-Za-z]/g) || []).length >= s.length * 0.7 && s.split(" ").length >= 2 && !/^(page|date|ref|tel|email|www|http)/i.test(s) && !/@/.test(s);
+    const hit = lines.find(s => ok(s) && TITLE_RE.test(s));
+    if (hit) {
+      g = hit;
+      if (g === g.toUpperCase()) g = g.toLowerCase().replace(/(^|\s)([a-z])/g, (m, a, b) => a + b.toUpperCase());
+    }
+  }
+  if (!g && d.text && d.text.length) {
+    const head = String(d.text[0] || "").slice(0, 1500);
+    const m = head.match(PHRASE_RE);
+    if (m) g = m[0].toLowerCase().replace(/(^|\s)([a-z])/g, (x, a, b) => a + b.toUpperCase()).replace(/ (And|Of) /g, (x, w) => " " + w.toLowerCase() + " ");
+  }
+  if (d.status === "scanned" && !g) return "";
+  d.guess = g.slice(0, 60);
+  return d.guess;
 }
 
 let showFiles = false;
