@@ -693,10 +693,6 @@ body.r2 { --t1: .75rem; --t2: .875rem; --t3: 1rem; --t4: 1.25rem; --t5: 1.75rem;
   --ref: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --amb: #8a5a00; --amb-bg: #fbe7b0; --amb-line: #e9b949; --grn: #2f4a2a; --grn-bg: #dcebc6; --grn-line: #8fb36b; }
 body.r2.res { font-size: var(--t3); line-height: 1.55; }
-body.r2.res .wrap { max-width: 980px; }
-body.r2.res main .wrap.layout { grid-template-columns: minmax(0, 1fr); padding-block: 28px 72px; }
-body.r2.res .col-side { display: none; }
-body.r2.res .col-main { gap: 44px; max-width: none; }
 body.r2.res, body.r2.res .wrap, body.r2.res .wrap * { text-align: left; }
 body.r2.res .btn { text-align: center; }
 body.r2.res h1.pj-t { font-size: var(--t5); line-height: 1.15; }
@@ -708,20 +704,12 @@ body.r2.res .smallnote, body.r2.res .section-head p, body.r2.res .tsum, body.r2.
 body.r2.res .src, body.r2.res .rs, body.r2.res .pj-s, body.r2.res .refnum, body.r2.res .tl-src { font-family: var(--ref); font-size: var(--t1); letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 400; }
 body.r2.res .tag { font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 500; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 body.r2.res .chip { padding: 6px 10px; }
-body.r2.res .section-head { gap: 4px; }
-body.r2.res .section-head p { max-width: 62ch; }
 mark.amb, mark.grn { color: inherit; border-radius: 4px; padding: 1px 4px; margin: 0 -4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 mark.amb { background: var(--amb-bg); box-shadow: inset 0 -2px 0 var(--amb-line); }
 mark.grn { background: var(--grn-bg); box-shadow: inset 0 -2px 0 var(--grn-line); }
 b.fig { font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* Header */
-body.r2.res .pj-top .wrap { gap: 18px; padding-block: 26px 28px; }
-body.r2.res .appl { display: grid; gap: 14px; justify-content: stretch; align-items: start; }
-body.r2.res .appl-main { gap: 4px; }
-body.r2.res .appl-ref { justify-items: start; text-align: left; gap: 3px; }
-body.r2.res .refnum { font-size: var(--t2); background: none; border: 0; padding: 0; border-radius: 0; color: var(--ink); }
-body.r2.res .prop { padding: 20px 22px; gap: 12px; border-radius: 18px; }
+body.r2.res .prop { padding: 20px 22px; gap: 12px; }
 body.r2.res .prop-lead { font-size: var(--t3); line-height: 1.6; font-weight: 400; letter-spacing: 0; max-width: 68ch; }
 body.r2.res .pfacts { gap: 0; padding-top: 4px; }
 body.r2.res .pfact { grid-template-columns: 11rem minmax(0, 1fr); gap: 2px 20px; padding: 12px 0; align-items: baseline; }
@@ -729,117 +717,10 @@ body.r2.res .pfact .eyebrow { grid-row: 1 / span 2; align-self: start; padding-t
 body.r2.res .pfact b { font-size: var(--t3); font-weight: 700; letter-spacing: 0; }
 body.r2.res .pfact .pj-s { grid-column: 2; text-align: left; }
 @media (max-width: 640px) { body.r2.res .pfact { grid-template-columns: minmax(0, 1fr); } body.r2.res .pfact .eyebrow { grid-row: auto; } body.r2.res .pfact .pj-s { grid-column: 1; } }
+.legend > div.legend-hl { grid-template-columns: minmax(0, 1fr); }
 .pj-actions { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
 .pj-actions .smallnote { margin: 0; color: var(--muted); }
 .pj-actions .smallnote.err { color: var(--amb); }
-
-/* At a glance */
-.glance { display: grid; gap: 18px; }
-.g-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
-.g-tile { background: #fffdf8; border: 1px solid #e7dec9; border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
-.g-tile b { font-size: var(--t4); font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
-.g-tile span { font-size: var(--t2); color: var(--muted); }
-.g-tile.low { background: var(--amb-bg); border-color: var(--amb-line); }
-.g-tile.low span { color: #6a4300; }
-.g-tile.good { background: var(--grn-bg); border-color: var(--grn-line); }
-.g-tile.good span { color: #2f4a2a; }
-.g-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.g-card { background: #fffdf8; border: 1px solid #e7dec9; border-radius: 18px; padding: 18px 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
-.g-card.wide { grid-column: 1 / -1; }
-.g-card h3 { margin: 0; font-size: var(--t3); }
-@media (max-width: 760px) { .g-grid { grid-template-columns: minmax(0, 1fr); } }
-.tl { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; }
-.tl-i { position: relative; display: grid; gap: 3px; align-content: start; padding: 22px 14px 0 0; }
-.tl-i::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: #cfc3a6; }
-.tl-i:last-child::before { right: 50%; }
-.tl-i .dot { position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #fffdf8; border: 2px solid #355030; }
-.tl-i.past .dot { background: #355030; }
-.tl-i.key .dot { background: var(--grn-line); border-color: #355030; width: 18px; height: 18px; top: -1px; }
-.tl-i.today .dot { border-color: var(--amb-line); background: var(--amb-bg); }
-.tl-i.today .tl-d { color: var(--amb); }
-.tl-l { font-size: var(--t2); color: var(--muted); }
-.tl-d { font-size: var(--t3); font-weight: 700; font-variant-numeric: tabular-nums; }
-.tl-n { font-size: var(--t2); font-weight: 600; color: var(--grn); }
-.tl-n.low { color: var(--amb); }
-.tl-unk { margin: 0; font-size: var(--t2); color: var(--amb); display: flex; gap: 8px; align-items: center; }
-.tl-unk::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px dashed var(--amb-line); }
-@media (max-width: 640px) { .tl { grid-auto-flow: row; } .tl-i { padding: 0 0 18px 28px; } .tl-i::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; } .tl-i:last-child::before { bottom: auto; height: 16px; } .tl-i .dot { top: 2px; } }
-.kf { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
-.kf li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 2px 14px; padding: 10px 0; border-top: 1px solid #efe7d4; align-items: baseline; }
-.kf li:first-child { border-top: 0; padding-top: 0; }
-.kf .k { font-size: var(--t2); color: var(--muted); }
-.kf .v { font-weight: 700; }
-.kf .rs { grid-column: 2; }
-.cv-row { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 7.5rem; gap: 12px; align-items: center; padding: 7px 0; }
-.cv-n { font-size: var(--t2); }
-.cv-bar { height: 12px; border-radius: 999px; background: #efe7d4; overflow: hidden; display: block; }
-.cv-bar i { display: block; height: 100%; border-radius: 999px; }
-.cv-strong i { width: 100%; background: #355030; }
-.cv-partial i { width: 55%; background: #8fb36b; }
-.cv-none { background: transparent; box-shadow: inset 0 0 0 1.5px var(--amb-line); }
-.cv-none i { width: 0; }
-.cv-l { font-size: var(--t2); font-weight: 600; }
-.cv-l.none { color: var(--amb); }
-@media (max-width: 520px) { .cv-row { grid-template-columns: minmax(0, 1fr) 6.5rem; } .cv-bar { grid-column: 1 / -1; order: 3; } }
-.split { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #efe7d4; }
-.split i { display: block; height: 100%; }
-.split .docs { background: #355030; }
-.split .rd { background: #c9b98f; }
-.split-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--t2); color: var(--muted); }
-.split-key b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: baseline; }
-.sw.docs { background: #355030; } .sw.rd { background: #c9b98f; }
-.byd { display: grid; gap: 6px; }
-.byd-row { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) 2.2rem; gap: 12px; align-items: center; }
-.byd-n { font-size: var(--t2); overflow-wrap: anywhere; }
-.byd-bar { height: 10px; border-radius: 999px; background: #efe7d4; display: block; overflow: hidden; }
-.byd-bar i { display: block; height: 100%; background: #6f8f56; border-radius: 999px; }
-.byd-c { font-size: var(--t2); font-weight: 700; font-variant-numeric: tabular-nums; }
-@media (max-width: 520px) { .byd-row { grid-template-columns: minmax(0, 1fr) 2.2rem; } .byd-bar { grid-column: 1 / -1; order: 3; } }
-
-/* Topic dropdowns */
-body.r2.res .trows { border-radius: 18px; background: #fffdf8; border-color: #e7dec9; }
-body.r2.res .trow { display: block; padding: 0; border-top: 1px solid #e7dec9; }
-body.r2.res .trow:first-child { border-top: 0; }
-.tdd > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto; gap: 8px 18px; align-items: start; padding: 16px 18px; }
-.tdd > summary::-webkit-details-marker { display: none; }
-.tdd > summary::after { content: ""; display: none; }
-.tdd .tp { display: flex; gap: 10px; align-items: center; min-width: 0; }
-.tdd .tp .tpic { width: 34px; height: 34px; flex: none; border-radius: 10px; }
-.tdd .tname { font-weight: 600; }
-.tdd .tsum { color: var(--ink); line-height: 1.5; }
-.tdd .tstat { display: flex; gap: 10px; align-items: center; justify-self: end; }
-.tdd .tstat::after { content: ""; width: 9px; height: 9px; border-right: 2px solid #6a5f54; border-bottom: 2px solid #6a5f54; transform: rotate(45deg); margin: -4px 2px 0 6px; transition: transform .15s; }
-.tdd[open] .tstat::after { transform: rotate(-135deg); margin-top: 3px; }
-.tdd > summary:focus-visible, .miss > summary:focus-visible { outline: 3px solid #355030; outline-offset: -3px; border-radius: 14px; }
-.tdd .tbody { display: grid; gap: 14px; padding: 2px 18px 18px calc(18px + 34px + 10px); }
-.tdd .tline { display: grid; gap: 4px; }
-.tdd .tline .tw { display: flex; gap: 6px 10px; flex-wrap: wrap; }
-.tdd .tline p { margin: 0; max-width: 66ch; }
-.tdd .tsub { font-size: var(--t1); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-family: var(--font-mono); margin-top: 4px; }
-@media (max-width: 720px) { .tdd > summary { grid-template-columns: minmax(0, 1fr) auto; } .tdd .tsum { grid-column: 1 / -1; grid-row: 2; } .tdd .tbody { padding-left: 18px; } }
-.dd-tools { display: flex; justify-content: flex-start; margin-bottom: 8px; }
-.dd-tools button { font: inherit; font-size: var(--t2); color: #355030; background: none; border: 0; padding: 4px 0; text-decoration: underline; cursor: pointer; }
-
-/* Not in the application */
-body.r2.res .missing { display: block; border-radius: 18px; }
-body.r2.res .missing > p { margin: 0; padding: 16px 18px; }
-body.r2.res .missing > .mhead2 { border-bottom: 1px solid #e7dec9; color: var(--ink); }
-body.r2.res details.miss { display: block; padding: 0; border: 0; border-top: 1px solid #e7dec9; border-radius: 0; background: transparent; box-shadow: none; }
-body.r2.res .missing > .mhead2 + details.miss { border-top: 0; }
-.miss > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; padding: 14px 18px; }
-.miss > summary::-webkit-details-marker { display: none; }
-.miss .mt { display: grid; gap: 2px; min-width: 0; }
-.miss .mname { font-weight: 600; }
-.miss .msum { color: var(--muted); }
-.miss .mchev { width: 9px; height: 9px; border-right: 2px solid #6a5f54; border-bottom: 2px solid #6a5f54; transform: rotate(45deg); margin-top: 6px; transition: transform .15s; }
-.miss[open] .mchev { transform: rotate(-135deg); margin-top: 10px; }
-.miss .mico { color: #8a5a00; }
-.miss .mbody { padding: 0 18px 16px calc(18px + 24px + 14px); display: grid; gap: 8px; }
-.miss .mbody p { margin: 0; max-width: 66ch; }
-.miss .mhint { font-size: var(--t2); color: var(--muted); }
-@media (max-width: 640px) { .miss .mbody { padding-left: 18px; } }
-.legend-hl p { margin: 0; }
 
 /* Saved applications and landing page */
 .saved { display: grid; gap: 12px; margin-top: 8px; }
@@ -853,6 +734,16 @@ body.r2.res .missing > .mhead2 + details.miss { border-top: 0; }
 .saveditem .rmv { font: inherit; font-size: .85rem; background: none; border: 0; color: #55655d; text-decoration: underline; cursor: pointer; padding: 6px; }
 .saved-note { font-size: .8rem; color: #55655d; margin: 0; }
 @media print { .pj-actions, .dd-tools { display: none !important; } details.tdd > .tbody, details.miss > .mbody { display: grid !important; } }
+details.howto > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 0; }
+details.howto > summary::-webkit-details-marker { display: none; }
+details.howto > summary h2 { margin: 0; }
+details.howto > summary::after { content: ""; flex: none; width: 10px; height: 10px; border-right: 2px solid #6a5f54; border-bottom: 2px solid #6a5f54; transform: rotate(45deg); margin-right: 6px; transition: transform .15s; }
+details.howto[open] > summary::after { transform: rotate(-135deg); }
+details.howto > summary:focus-visible { outline: 3px solid #355030; outline-offset: 4px; border-radius: 8px; }
+details.howto > .section-head { margin-top: 10px; }
+details.howto > .legend { margin-top: 14px; }
+.legend > div > mark { justify-self: start; }
+@media print { details.howto > * { display: block !important; } }
 </style>
 
 <nav class="appbar" aria-label="App">
@@ -960,28 +851,14 @@ body.r2.res .missing > .mhead2 + details.miss { border-top: 0; }
   <div class="wrap layout">
   <div class="col-main">
 
-    <section class="glance" id="glance" aria-labelledby="h-glance">
-      <div class="section-head">
-        <h2 id="h-glance">At a glance</h2>
-        <p id="glance-sub"></p>
-      </div>
-      <div class="g-stats" id="g-stats"></div>
-      <div class="g-grid">
-        <div class="g-card wide"><h3>Key dates</h3><div id="g-dates"></div><p class="smallnote" id="g-checked"></p></div>
-        <div class="g-card"><h3>Key facts</h3><div id="g-facts"></div></div>
-        <div class="g-card"><h3>How much the documents cover</h3><div id="g-cov"></div><p class="smallnote">Coverage shows how much the documents say about a topic. It does not measure harm or benefit.</p></div>
-        <div class="g-card wide"><h3>Where the points come from</h3><div id="g-src"></div></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="h-dates" hidden>
+    <section aria-labelledby="h-dates">
       <div class="section-head"><h2 id="h-dates">Key dates</h2></div>
       <div class="dates" id="dates"></div>
       <p class="smallnote" id="checked"></p>
     </section>
 
     <section aria-labelledby="h-home" id="home-res">
-      <div class="hhead"><span class="hstate" id="home-state"></span><h2 id="h-home">Topic by topic</h2><p class="smallnote" id="home-sub"></p><div class="hchips" id="home-chips"></div></div>
+      <div class="hhead"><span class="hstate" id="home-state"></span><h2 id="h-home">What the documents cover</h2><p class="smallnote" id="home-sub"></p><div class="hchips" id="home-chips"></div></div>
       <div class="homebox" id="homebox"></div>
     </section>
 
@@ -1018,20 +895,24 @@ body.r2.res .missing > .mhead2 + details.miss { border-top: 0; }
     </section>
 
     <section aria-labelledby="h-read">
+      <details class="howto"><summary><h2 id="h-read">How to read this page</h2></summary>
       <div class="section-head">
-        <h2 id="h-read">How to read this page</h2>
         <p>Every line below is taken from the application documents and names its source page. Nothing here is a judgement on whether the scheme is good or bad.</p>
       </div>
       <div class="legend">
         <div><span class="tag stated">From the documents</span><p>The documents say this in writing, or clearly say nothing about it.</p></div>
-        <div><span class="tag reading">Our reading</span><p>Our interpretation of the drawings and plans. Check the source if it matters to you.</p></div>
-        <div class="legend-hl"><span class="tag stated">Highlights</span><p><mark class="grn">Green</mark> marks the main finding for a topic. <mark class="amb">Amber</mark> marks something missing, not covered or below the recommended standard. <b class="fig">Bold</b> marks figures. Page references are in a typewriter font.</p></div>
+        <div><span class="tag reading">AI interpretation</span><p>Our interpretation of the drawings and plans. Check the source if it matters to you.</p></div>
+        <div><mark class="grn">Green</mark><p>The main finding for a topic, in the topic tabs.</p></div>
+        <div><mark class="amb">Amber</mark><p>Something missing, not covered or below the recommended standard.</p></div>
+        <div><b class="fig">Bold</b><p>Figures, such as sizes, counts and percentages.</p></div>
+        <div><span class="rs" style="font-family: var(--ref)">p.12</span><p>Page references are in a typewriter font.</p></div>
         <div id="read-warn" class="warnbox" hidden></div>
         <div><span class="meter strong"><i></i><i></i></span><p><b>Well covered.</b> The documents assess this topic in detail.</p></div>
         <div><span class="meter partial"><i></i><i></i></span><p><b>Partly covered.</b> The topic is mentioned, or only partly assessed.</p></div>
         <div><span class="meter none"><i></i><i></i></span><p><b>Not covered.</b> The documents say nothing about it. That does not mean there is no impact.</p></div>
         <div class="legend-note"><p>The coverage boxes show how much the documents say about a topic. They do not measure harm or benefit.</p></div>
       </div>
+      </details>
     </section>
 
   </div>
@@ -1101,7 +982,7 @@ const GROUPS = {
 };
 const DATE_LABELS = { registered: "Application registered", comments_close: "Comments close", target_decision: "Target decision date", committee: "Planning committee" };
 const COVERAGE = { strong: "Well covered", partial: "Partly covered", none: "Not covered" };
-const BASIS = { stated: "From the documents", reading: "Our reading" };
+const BASIS = { stated: "From the documents", reading: "AI interpretation" };
 const KINDS = ["footprint", "neighbour", "road", "green", "other"];
 const POS = { "north-west": [0, 0], north: [1, 0], "north-east": [2, 0], west: [0, 1], centre: [1, 1], east: [2, 1], "south-west": [0, 2], south: [1, 2], "south-east": [2, 2] };
 
@@ -1168,7 +1049,7 @@ function renderResults(data, ctx) {
   $("facts").hidden = !o.headline_facts.length;
   $("checked").textContent = ctx.example
     ? "Council record checked " + fmtDate(data.meta.last_checked_council_record)
-    : "Dates taken from the documents, not the council's website";
+    : "";
   $("analysed").textContent = "Documents analysed " + fmtDate(data.meta.analysed_on);
 
   // Warn about anything the analysis couldn't see
@@ -1177,9 +1058,10 @@ function renderResults(data, ctx) {
     const pn = ctx.omitted.reduce((n, x) => n + (x.to - x.from + 1), 0), fn = ctx.omitted.length;
     warns.push(`<p>${ctx.pagesTotal ? `${ctx.pagesTotal - pn} of ${ctx.pagesTotal} pages were read. ${pn} ${pn === 1 ? "was" : "were"} left out because the documents are too long to read in one go.` : `${pn} ${pn === 1 ? "page" : "pages"} in ${fn} ${fn === 1 ? "file was" : "files were"} too long to read.`}</p><details class="warnmore"><summary>Show which pages</summary><p>${esc(ctx.omitted.map(x => `${x.label} pages ${x.from}\u2013${x.to}`).join("; "))}.</p></details>`);
   }
-  if (ctx.unreadable?.length) warns.push(`<p>${esc("These files had no readable text and were not read: " + ctx.unreadable.join(", ") + ".")}</p>`);
-  $("read-warn").hidden = !warns.length;
-  $("read-warn").innerHTML = warns.length ? WARN_ICON + `<div>${warns.join("")}<p>Where this page says something isn't covered, it may be in those pages.</p></div>` : "";
+  if (ctx.unreadable?.length) warns.push(`<p>${ctx.unreadable.length === 1 ? "1 file had" : ctx.unreadable.length + " files had"} no readable text, so ${ctx.unreadable.length === 1 ? "it was" : "they were"} not read. ${ctx.unreadable.length === 1 ? "It" : "They"} may be scans or photos.</p>`);
+  $("read-warn").hidden = false;
+  $("read-warn").innerHTML = WARN_ICON + `<div><p>The warning triangle means some of the documents could not be fully read. If this page says something isn't covered, it may be in the parts that were not read.</p></div>`;
+
 
   // Dates
   const today = todayISO();
@@ -1214,7 +1096,9 @@ function renderResults(data, ctx) {
   councilLink(data.overview, !!ctx.example);
   samplePromise.then(sm => { if (!sm) $("addr-launch").classList.add("addr-off"); });
 
-  $("missing").innerHTML = missingHTML(data);
+  $("missing").innerHTML = data.missing_items.length
+    ? data.missing_items.map(m => `<div class="miss"><span class="mico">${WARN_ICON}</span><h3>${esc(m.item)}</h3><p>${hl(m.why_it_matters, "amb")}</p></div>`).join("")
+    : `<p>No expected reports were found to be missing.</p>`;
 
   const ac = data.also_covered || [], df = data.differences || [];
   $("also-sec").hidden = !ac.length;
@@ -1225,7 +1109,6 @@ function renderResults(data, ctx) {
   const qa = data.ask_the_application_examples || [];
   $("h-ask").closest("section").hidden = !qa.length;
   $("qa").innerHTML = qa.map(x => `<div><p class="q">${esc(x.q)}</p><div class="a"><p>${esc(x.a)}</p>${tag(x.basis)}</div></div>`).join("");
-  renderGlance(data, ctx); actionsReset(data, ctx);
 }
 
 function renderTabs() {
@@ -1249,9 +1132,9 @@ function renderPanel(openTopic) {
     return `<details class="impact" id="imp-${t}" ${openTopic ? (openTopic === t ? "open" : "") : "open"}>
       <summary><h3>${TOPICS[t]}</h3><span class="cov">${meter(imp.evidence)}${COVERAGE[imp.evidence]}</span></summary>
       ${imp.summary ? `<p class="summary">${esc(imp.summary)}</p>` : ""}
-      <ul>${imp.statements.map(s => {
+      <ul>${imp.statements.map((s, i) => {
         const src = srcText(s.src);
-        return `<li>${tag(s.basis)}<p>${esc(s.t)}</p><span class="src${src.gone ? " gone" : ""}">${esc(src.text)}</span></li>`;
+        return `<li>${tag(s.basis)}<p>${hl(s.t, (lowSignal(s.t) || /not mentioned/i.test(s.src || "")) ? "amb" : (i === 0 && s.basis === "stated" && imp.evidence !== "none") ? "grn" : "")}</p><span class="src${src.gone ? " gone" : ""}">${esc(src.text)}</span></li>`;
       }).join("")}</ul>${forHome(t)}
     </details>`;
   }).join("");
@@ -1548,8 +1431,9 @@ $("back").addEventListener("click", e => {
 document.body.classList.add("r2");
 
 const MONTHS_RE = "Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?";
-const UNIT_RE = "%|per cent|sq\\.? ?m|sqm|m²|m2|m³|metres?|meters?|storeys?|floors?|homes?|flats?|dwellings?|units?|windows?|trees?|days?|weeks?|months?|hours?|spaces?|bedrooms?|rooms?|kW|kg|ha|hectares?|m";
-const FIG_RE = new RegExp("(?<![\\w.])(?!(?:19|20)\\d\\d\\b)\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?:\\s?(?:" + UNIT_RE + ")(?![a-z]))?(?!\\s+(?:" + MONTHS_RE + ")\\b)", "gi");
+const UNIT_WORD = "per cent|sq\\.? ?m|sqm|metres?|meters?|storeys?|floors?|homes?|flats?|dwellings?|units?|windows?|trees?|days?|weeks?|months?|hours?|spaces?|bedrooms?|rooms?|bays?|trips?|years?|minutes?|garages?|balconies|gardens?";
+const UNIT_TIGHT = "%|m²|m2|m³|m|ha|kW|kg";
+const FIG_RE = new RegExp("(?<![\\w.\\-/£$])(?:£\\s?\\d[\\d,]*(?:\\.\\d+)?(?:\\s?(?:k|m|bn|million|billion))?(?![\\w\\-/])|\\d[\\d,]*(?:\\.\\d+)?(?:(?:" + UNIT_TIGHT + ")(?![A-Za-z])|\\s(?:" + UNIT_WORD + ")(?![A-Za-z])))", "gi");
 const LOW_RE = /\b(below|falls? short|fall short|does not meet|do not meet|fail(?:s|ed|ure)?|exceed(?:s|ed)?|breach(?:es|ed)?|not (?:been )?(?:provided|assessed|submitted|stated|covered|included|found|mentioned|tested|given)|no [a-z ,-]{0,40}(?:provided|submitted|found|assessed|given)|missing|lacks?|unclear|not clear|disagree|conflict|loss of|overshadow|reduc(?:ed|tion) (?:in )?(?:daylight|sunlight|light)|do(?:es)? not cover|don't cover|doesn't cover|worse|harm)\b/i;
 const lowSignal = t => LOW_RE.test(String(t || ""));
 const figs = raw => esc(raw).replace(FIG_RE, m => `<b class="fig">${m}</b>`);
@@ -1570,101 +1454,7 @@ function dirFact(h) {
   return ["Direction", "Too close to tell", "Under 30 metres apart, so no direction is given"];
 }
 
-// "Not in the application": one dropdown per item, with a one-line summary on top
-function missingHTML(data) {
-  const items = data.missing_items || [];
-  if (!items.length) return `<p>No expected reports were found to be missing.</p>`;
-  const n = items.length;
-  return `<p class="mhead2"><b class="fig">${n}</b> ${n === 1 ? "thing" : "things"} a resident might expect ${n === 1 ? "was" : "were"} not found. Open each one to see why it matters.</p>` +
-    items.map(m => `<details class="miss"><summary><span class="mico">${WARN_ICON}</span><span class="mt"><b class="mname">${esc(m.item)}</b><span class="msum">${hl(firstSentence(m.why_it_matters), "amb")}</span></span><span class="mchev" aria-hidden="true"></span></summary><div class="mbody"><p>${hl(m.why_it_matters, "")}</p><p class="mhint">You can ask the council about this in a comment.</p></div></details>`).join("");
-}
-
-// open / close every topic at once
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-ddall]");
-  if (!b) return;
-  const open = b.dataset.ddall === "open";
-  document.querySelectorAll("#homebox details.tdd").forEach(d => { d.open = open; });
-});
-
-// ---------- At a glance ----------
-function docNames(src) {
-  if (!src || /not mentioned/i.test(src)) return [];
-  return String(src).split(/\s*[;,]\s*(?=[A-Z])/).map(x => x.replace(/\s+(?:pp?\.?|pages?)\s*[\d\s,\-–]+$/i, "").trim()).filter(Boolean);
-}
-function pointsOf(d) {
-  const keep = s => s && s.src && !/not mentioned/i.test(s.src);
-  const nb = d.stakeholders.neighbours.impacts, out = [];
-  Object.keys(TOPICS).forEach(t => (nb[t]?.statements || []).filter(keep).forEach(s => out.push(s)));
-  (d.also_covered || []).forEach(a => (a.statements || []).filter(keep).forEach(s => out.push(s)));
-  (d.home?.statements || []).filter(keep).forEach(s => out.push(s));
-  return out;
-}
 function daysText(n) { return n > 1 ? `${n} days left` : n === 1 ? "1 day left" : n === 0 ? "Closes today" : "Closed"; }
-function timelineHTML(d) {
-  const today = todayISO();
-  const dated = d.key_dates.filter(k => k.date).map(k => ({ id: k.id, label: DATE_LABELS[k.id] || k.label, date: k.date, src: k.src })).sort((a, b) => a.date < b.date ? -1 : 1);
-  const unknown = d.key_dates.filter(k => !k.date);
-  const steps = []; let placed = false;
-  dated.forEach(i => { if (!placed && i.date > today) { steps.push({ today: true }); placed = true; } steps.push(i); });
-  if (!placed && dated.length) steps.push({ today: true });
-  const li = s => {
-    if (s.today) return `<li class="tl-i today"><span class="dot"></span><span class="tl-l">Today</span><b class="tl-d">${fmtDate(today)}</b></li>`;
-    const key = s.id === "comments_close", n = daysUntil(s.date);
-    return `<li class="tl-i ${s.date < today ? "past" : "next"}${key ? " key" : ""}"><span class="dot"></span><span class="tl-l">${esc(s.label)}</span><b class="tl-d">${fmtDate(s.date)}</b>${key ? `<span class="tl-n${n <= 7 ? " low" : ""}">${daysText(n)}</span>` : ""}<span class="rs">${esc(s.src || "Source not given")}</span></li>`;
-  };
-  return (steps.length ? `<ol class="tl">${steps.map(li).join("")}</ol>` : "") +
-    unknown.map(u => `<p class="tl-unk">${esc(DATE_LABELS[u.id] || u.label)}: not stated in the documents</p>`).join("");
-}
-function renderGlance(d, ctx) {
-  const pts = pointsOf(d);
-  const fromDocs = pts.filter(p => p.basis === "stated").length;
-  const pct = pts.length ? Math.round(fromDocs / pts.length * 100) : 0;
-  const nbi = d.stakeholders.neighbours.impacts;
-  const covs = Object.keys(TOPICS).map(t => ({ t, ev: nbi[t]?.evidence || "none" }));
-  const nStrong = covs.filter(c => c.ev === "strong").length, nNone = covs.filter(c => c.ev === "none").length;
-  const miss = (d.missing_items || []).length;
-  const close = d.key_dates.find(x => x.id === "comments_close" && x.date);
-  const left = close ? daysUntil(close.date) : null;
-  let readTile = "";
-  if (ctx && ctx.pagesTotal) {
-    const out = (ctx.omitted || []).reduce((n, x) => n + (x.to - x.from + 1), 0);
-    readTile = `<div class="g-tile${out ? " low" : ""}"><b>${ctx.pagesTotal - out} of ${ctx.pagesTotal}</b><span>pages read${out ? ", the rest were too long to read" : ""}</span></div>`;
-  }
-  const tile = (n, label, cls) => `<div class="g-tile${cls ? " " + cls : ""}"><b>${n}</b><span>${label}</span></div>`;
-  $("g-stats").innerHTML =
-    tile(pts.length, "points, each with a page reference") +
-    tile(pct + "%", "from the documents, the rest is our reading") +
-    tile(nStrong + " of " + covs.length, "topics well covered", nStrong ? "good" : "") +
-    tile(nNone, nNone === 1 ? "topic not covered" : "topics not covered", nNone ? "low" : "") +
-    tile(miss, miss === 1 ? "thing not in the application" : "things not in the application", miss ? "low" : "") +
-    (left === null ? "" : tile(left > 0 ? left : "Closed", left > 0 ? "days left to comment" : "comments", left > 7 ? "good" : "low")) +
-    readTile;
-  $("glance-sub").textContent = ctx && ctx.example ? "From the fictional example." : "A summary of this report. Open the sections below for the detail.";
-
-  $("g-dates").innerHTML = timelineHTML(d);
-  $("g-checked").textContent = $("checked").textContent;
-
-  const facts = d.overview.headline_facts || [];
-  $("g-facts").innerHTML = facts.length
-    ? `<ul class="kf">${facts.map(f => `<li><span class="k">${esc(f.label)}</span><span class="v">${figs(f.value)}</span><span class="rs">${esc(f.src || "Source not given")}</span></li>`).join("")}</ul>`
-    : `<p class="smallnote">No key facts were found in the documents.</p>`;
-
-  $("g-cov").innerHTML = covs.map(c => `<div class="cv-row"><span class="cv-n">${TOPICS[c.t]}</span><span class="cv-bar cv-${c.ev}" aria-hidden="true"><i></i></span><span class="cv-l ${c.ev}">${COVERAGE[c.ev]}</span></div>`).join("");
-
-  const by = {};
-  pts.forEach(p => docNames(p.src).forEach(n => { by[n] = (by[n] || 0) + 1; }));
-  let rows = Object.entries(by).sort((a, b) => b[1] - a[1]);
-  if (rows.length > 7) { const rest = rows.slice(6).reduce((n, r) => n + r[1], 0); rows = rows.slice(0, 6).concat([["Other documents", rest]]); }
-  const max = Math.max(1, ...rows.map(r => r[1]));
-  const rd = pts.length - fromDocs;
-  $("g-src").innerHTML = pts.length
-    ? `<div class="split" role="img" aria-label="${fromDocs} points from the documents, ${rd} our reading"><i class="docs" style="width:${pct}%"></i><i class="rd" style="width:${100 - pct}%"></i></div>
-       <div class="split-key"><span><i class="sw docs"></i>From the documents <b>${fromDocs}</b></span><span><i class="sw rd"></i>Our reading <b>${rd}</b></span></div>
-       <div class="byd">${rows.map(r => `<div class="byd-row"><span class="byd-n">${esc(r[0])}</span><span class="byd-bar" aria-hidden="true"><i style="width:${Math.round(r[1] / max * 100)}%"></i></span><span class="byd-c">${r[1]}</span></div>`).join("")}</div>`
-    : `<p class="smallnote">No points with a page reference were found.</p>`;
-}
-
 // ---------- Save to my list ----------
 const SAVE_KEY = "planify.saved.v1", SAVE_MAX = 12;
 function loadSaved() { try { const v = JSON.parse(localStorage.getItem(SAVE_KEY) || "[]"); return Array.isArray(v) ? v : []; } catch { return []; } }
@@ -1727,7 +1517,7 @@ async function downloadPdf() {
   const head = t => { y += 4; if (y + 12 > BOTTOM) { doc.addPage(); y = M; } put(t, 13, "bold", [53, 80, 48], 2); };
   const point = s => {
     const x = srcText(s.src);
-    put((s.basis === "stated" ? "From the documents: " : "Our reading: ") + s.t, 10, "normal", [40, 36, 30], 0.2, "helvetica", 3);
+    put((s.basis === "stated" ? "From the documents: " : "AI interpretation: ") + s.t, 10, "normal", [40, 36, 30], 0.2, "helvetica", 3);
     put(x.text, 8, "normal", [110, 100, 85], 2.2, "courier", 3);
   };
   put("Planify", 9, "bold", [53, 80, 48], 1);
@@ -1744,7 +1534,7 @@ async function downloadPdf() {
     put((d.home.address || d.home.postcode || "") + (d.home.summary ? ": " + d.home.summary : ""), 10, "normal", [40, 36, 30], 1);
   }
 
-  head("Topic by topic");
+  head("What the documents cover");
   Object.keys(TOPICS).forEach(t => {
     const imp = d.stakeholders.neighbours.impacts[t];
     put(TOPICS[t] + " (" + COVERAGE[imp.evidence] + ")", 11, "bold", [40, 36, 30], 0.5);
@@ -2245,25 +2035,17 @@ function topicRow(h, t) {
   const real = x => x && x.src && !/not mentioned/i.test(x.src);
   const nbs = (nb?.statements || []).filter(real);
   const hs = h ? h.statements.filter(s => s.topic === t) : [];
-  const local = st === "rep" || st === "none";
-  const covered = st === "strong" || st === "partial" || st === "rep" || st === "none" || st === "area";
-  let mainDone = false;
-  const line = s => {
-    const x = srcText(s.src);
-    let cls = lowSignal(s.t) ? "amb" : "";
-    if (!cls && !mainDone && covered && s.basis === "stated") { cls = "grn"; mainDone = true; }
-    return `<div class="tline"><div class="tw">${tag(s.basis)}</div><p>${hl(s.t, cls)}</p><span class="rs${x.gone ? " gone" : ""}">${esc(x.text)}</span></div>`;
-  };
-  const gapLine = `<div class="tline"><p>${hl(h ? "The documents don't cover this for your address." : "The documents don't cover this.", "amb")}</p><span class="rs gone">${esc(srcText("(not mentioned)").text)}</span></div>`;
-  const first = local ? hs : nbs;
-  const second = local ? nbs.filter(m => !hs.some(s => s.t === m.t)) : [];
-  let body = first.length ? first.map(line).join("") : gapLine;
-  if (second.length) body += `<span class="tsub">Around the site, for neighbours generally</span>` + second.map(line).join("");
-  const note = h && st === "area" ? `<p class="tnote">${esc(STATE_HELP.area)}</p>` : "";
-  const sumRaw = local ? (hs[0]?.t || "") : (nb?.summary || nbs[0]?.t || "");
-  const sumText = sumRaw ? firstSentence(sumRaw) : (h ? "The documents don't cover this for your address." : "The documents don't cover this.");
-  const sumCls = !sumRaw || !covered || lowSignal(sumText) ? "amb" : "grn";
-  return `<div class="trow" id="topic-${t}"><details class="tdd tdd-${st}"><summary><span class="tp">${topicPic(t)}<span class="tname">${TOPICS[t]}</span></span><span class="tsum">${hl(sumText, sumCls)}</span><span class="tstat"><span class="chip chip-${st}">${STATE_LABEL[st]}</span>${!h ? meter(nb ? nb.evidence : "none") : ""}</span></summary><div class="tbody">${body}${note}</div></details></div>`;
+  const line = (tg, text, src, main) => { const x = srcText(src); const c = (lowSignal(text) || !src || /not mentioned/i.test(src)) ? "amb" : main ? "grn" : ""; return `<div class="tline"><div class="tw">${tg}</div><p>${hl(text, c)}</p><span class="rs${x.gone ? " gone" : ""}">${esc(x.text)}</span></div>`; };
+  const asLines = (list, main) => list.map((s, i) => line(tag(s.basis), s.t, s.src, main && i === 0 && s.basis === "stated" && st !== "na" && st !== "area" || (main && i === 0 && s.basis === "stated" && st === "area"))).join("");
+  let shown = [], more = [], eyebrow = "", note = "", body = "";
+  if (st === "rep" || st === "none") { shown = hs; more = nbs; eyebrow = "Around the site, for neighbours generally"; }
+  else if (nbs.length) { shown = nbs.slice(0, 1); more = nbs.slice(1); if (h) note = STATE_HELP.area; }
+  body = shown.length ? asLines(shown) : line("", h ? "The documents don't cover this for your address." : "The documents don't cover this.", "(not mentioned)");
+  const extra = more.filter(m => !shown.some(s => s.t === m.t));
+  const toggle = extra.length ? `<details class="tmore"><summary>Show ${extra.length} more ${extra.length === 1 ? "statement" : "statements"}</summary>${eyebrow ? `<span class="eyebrow">${esc(eyebrow)}</span>` : ""}${asLines(extra)}</details>` : "";
+  return `<div class="trow" id="topic-${t}"><div class="tp">${topicPic(t)}<span>${TOPICS[t]}</span></div>
+    <div class="tdetail">${body}${note ? `<p class="tnote">${esc(note)}</p>` : ""}${toggle}</div>
+    <div class="tstat"><span class="chip chip-${st}">${STATE_LABEL[st]}</span>${!h ? meter(nb ? nb.evidence : "none") : ""}</div></div>`;
 }
 function renderHome(h) {
   const topics = Object.keys(TOPICS);
@@ -2271,10 +2053,10 @@ function renderHome(h) {
   const box = $("homebox"), sec = $("home-res");
   sec.classList.toggle("has-addr", !!h);
   if (!h) {
-    $("h-home").textContent = "What the documents cover, topic by topic";
+    $("h-home").textContent = "What the documents cover";
     $("home-sub").textContent = "";
     $("home-chips").innerHTML = ["strong", "partial", "nocov"].map(k => { const n = states.filter(x => x === k).length; return n ? `<span class="chip chip-${k}">${n} ${STATE_LABEL[k].toLowerCase()}</span>` : ""; }).join("");
-    box.innerHTML = `<div class="dd-tools"><button type="button" data-ddall="open">Open all topics</button>&nbsp;&nbsp;<button type="button" data-ddall="close">Close all</button></div><div class="trows">${topics.map(t => topicRow(h, t)).join("")}</div>`;
+    box.innerHTML = `<div class="trows">${topics.map(t => topicRow(h, t)).join("")}</div>`;
     return;
   }
   const where = h.address || h.postcode || "your address";
@@ -2315,7 +2097,7 @@ function renderHome(h) {
 }
 function forHome(t) {
   const hs = (R.home?.statements || []).filter(s => s.topic === t);
-  return hs.length ? `<div class="forhome"><span class="eyebrow">For your home</span>${hs.map(s => `<p>${esc(s.t)}<span class="src">${esc(srcText(s.src).text)}</span></p>`).join("")}</div>` : "";
+  return hs.length ? `<div class="forhome"><span class="eyebrow">For your home</span>${hs.map(s => `<p>${hl(s.t)}<span class="src">${esc(srcText(s.src).text)}</span></p>`).join("")}</div>` : "";
 }
 
 // ---------- Ask about this application ----------
@@ -2406,7 +2188,7 @@ function chatNormalise(raw, text) {
 }
 function answerHTML(a) {
   const badge = a.cov === "full" ? "" : `<span class="chip ${a.cov === "none" ? "chip-na" : "chip-area"}">${a.cov === "none" ? "Not in the documents" : "Partly in the documents"}</span>`;
-  const pts = a.points.map(p => `<div class="tline"><div class="tw">${tag(p.basis)}</div><p>${esc(p.t)}</p><span class="rs">${esc(p.src)}</span></div>`).join("");
+  const pts = a.points.map(p => `<div class="tline"><div class="tw">${tag(p.basis)}</div><p>${hl(p.t)}</p><span class="rs">${esc(p.src)}</span></div>`).join("");
   const gap = a.gap ? `<p class="gapnote">${esc(a.gap)}</p>` : "";
   const cq = a.cq ? `<div class="cq"><span class="eyebrow" style="color:inherit">A question you could put to the council</span><p>${esc(a.cq)}</p>${navigator.clipboard ? '<button type="button" class="btn small" data-copy>Copy question</button>' : ""}</div>` : "";
   return badge + pts + gap + cq;
