@@ -744,6 +744,47 @@ details.howto > .section-head { margin-top: 10px; }
 details.howto > .legend { margin-top: 14px; }
 .legend > div > mark { justify-self: start; }
 @media print { details.howto > * { display: block !important; } }
+.eyebrow .sumnote { text-transform: none; letter-spacing: 0; font-family: var(--font-body); color: var(--muted); margin-left: 4px; }
+#sumnote { margin: 0; }
+.section-head p.wide { max-width: none; }
+.pane-tabs { display: flex; gap: 6px; border-bottom: 1px solid #e7dec9; margin: 8px 0 18px; }
+.pane-tabs button { font: inherit; font-weight: 600; background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; margin-bottom: -1px; color: var(--muted); cursor: pointer; }
+.pane-tabs button[aria-selected="true"] { color: inherit; border-bottom-color: #2f4a2a; }
+@media print { #pane-find { display: block !important; } #pane-docs, .pane-tabs { display: none !important; } }
+.drawgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .drawgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.dfig { padding: 8px; gap: 6px; border-radius: 12px; }
+.dfig .dt { font-size: .8125rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.doclist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.doclist li button { width: 100%; display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; text-align: left; background: #fffdf8; border: 1px solid #e7dec9; border-radius: 12px; padding: 8px 14px 8px 8px; cursor: pointer; font: inherit; color: inherit; }
+.doclist .th { width: 64px; height: 48px; border: 1px solid #e7dec9; border-radius: 6px; background: #fff; overflow: hidden; display: grid; place-items: center; }
+.doclist .th img { width: 100%; height: 100%; object-fit: contain; }
+.doclist .dtt { font-weight: 600; overflow-wrap: anywhere; }
+.doclist .dsub { font-size: .8125rem; color: var(--muted); }
+.doclist .arr { color: var(--muted); font-size: 1.1rem; }
+.pv-nav { display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.pv-nav button { font: inherit; padding: 4px 10px; border: 1px solid #e7dec9; border-radius: 8px; background: #fffdf8; cursor: pointer; }
+#draw-dlg { width: min(1200px, 96vw); }
+#draw-dlg .dlg-body img { width: 100%; max-width: 100%; }
+@media (max-width: 640px) { #draw-dlg .dlg-body img { width: 100%; } }
+@media print { #alldocs-sec { display: none; } }
+.dfig { margin: 0; display: grid; gap: 10px; align-content: start; background: #fffdf8; border: 1px solid #e7dec9; border-radius: 16px; padding: 12px; min-width: 0; }
+.dfig .dimg { display: block; width: 100%; padding: 0; border: 1px solid #e7dec9; border-radius: 10px; background: #fff; cursor: zoom-in; overflow: hidden; aspect-ratio: 4 / 3; }
+.dfig .dimg img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.dfig .dimg.wait { cursor: default; display: grid; place-items: center; color: var(--muted); font-size: var(--t2, .875rem); }
+.dfig figcaption { display: grid; gap: 2px; text-align: left; }
+.dfig .dk { font-size: .75rem; color: var(--muted); }
+.dfig .dt { font-weight: 600; overflow-wrap: anywhere; }
+.dfig .dsc { font-size: .875rem; color: var(--muted); }
+.dfig .rs { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: .75rem; color: var(--muted); }
+.dfig .dnote { font-size: .8125rem; color: #8a5a00; }
+#draw-dlg { border: 0; padding: 0; max-width: 96vw; max-height: 94vh; border-radius: 14px; background: #fff; }
+#draw-dlg::backdrop { background: rgba(30, 28, 24, .6); }
+#draw-dlg .dlg-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e7dec9; position: sticky; top: 0; background: #fff; }
+#draw-dlg .dlg-body { overflow: auto; max-height: calc(94vh - 52px); max-width: 96vw; }
+#draw-dlg .dlg-body img { display: block; width: min(1600px, 160vw); max-width: none; }
+@media (max-width: 640px) { #draw-dlg .dlg-body img { width: 220vw; } }
+@media print { #drawings-sec { display: none; } }
 </style>
 
 <nav class="appbar" aria-label="App">
@@ -818,7 +859,6 @@ details.howto > .legend { margin-top: 14px; }
 
     <section class="tips" aria-label="Help">
       <div><h3>Where to find the documents</h3><p>On your council's planning website, search for the application reference or address. The documents are usually listed under a "Documents" tab.</p></div>
-      <div><h3>What happens to your files</h3><p>Files are opened in your browser to check they can be read. When you choose Analyse, the text from them is sent to Claude, through this site's small relay, to write the summary. Nothing is stored. The files themselves aren't uploaded or stored.</p></div>
     </section>
 
     <p><a href="#" id="see-example">See an example result</a> <span style="color:var(--muted)">(a made-up application)</span></p>
@@ -840,8 +880,9 @@ details.howto > .legend { margin-top: 14px; }
       <span class="smallnote" id="act-msg" role="status"></span>
     </div>
     <section class="prop" aria-label="What is proposed">
-      <span class="eyebrow">What is proposed</span>
+      <span class="eyebrow">What is proposed <span class="sumnote">(AI summary)</span></span>
       <p class="prop-lead" id="oneliner"></p>
+      <p class="smallnote" id="sumnote">A short summary written by AI from the documents. The key details below come from the documents.</p>
       <div class="pfacts" id="facts"></div>
     </section>
   </div>
@@ -857,6 +898,29 @@ details.howto > .legend { margin-top: 14px; }
       <p class="smallnote" id="checked"></p>
     </section>
 
+    <div class="pane-tabs" id="pane-tabs" role="tablist" aria-label="Page sections" hidden>
+      <button type="button" role="tab" id="ptab-find" aria-selected="true" data-pane="find">What the documents say</button>
+      <button type="button" role="tab" id="ptab-docs" aria-selected="false" data-pane="docs">Documents</button>
+    </div>
+    <div id="pane-docs" role="tabpanel" aria-labelledby="ptab-docs" hidden>
+    <section id="drawings-sec" aria-labelledby="h-drawings" hidden>
+      <div class="section-head">
+        <h2 id="h-drawings">Drawings</h2>
+      </div>
+      <p class="smallnote" id="drawstat"></p>
+      <div class="drawgrid" id="drawgrid"></div>
+    </section>
+
+    </div>
+
+    <dialog id="draw-dlg" aria-label="Document preview">
+      <div class="dlg-top"><strong id="pv-title"></strong>
+        <span class="pv-nav"><button type="button" id="pv-prev" aria-label="Previous page">&larr;</button> <span id="pv-pg"></span> <button type="button" id="pv-next" aria-label="Next page">&rarr;</button> <button type="button" id="pv-close">Close</button></span>
+      </div>
+      <div class="dlg-body" id="pv-body"></div>
+    </dialog>
+
+    <div id="pane-find" role="tabpanel" aria-labelledby="ptab-find">
     <section aria-labelledby="h-home" id="home-res">
       <div class="hhead"><span class="hstate" id="home-state"></span><h2 id="h-home">What the documents cover</h2><p class="smallnote" id="home-sub"></p><div class="hchips" id="home-chips"></div></div>
       <div class="homebox" id="homebox"></div>
@@ -881,7 +945,7 @@ details.howto > .legend { margin-top: 14px; }
     <section aria-labelledby="h-miss">
       <div class="section-head">
         <h2 id="h-miss">Not in the application</h2>
-        <p>Documents you might expect that were not submitted, or questions the submitted ones leave open. You can ask the council about these in a comment.</p>
+        <p class="wide">Documents you might expect that were not submitted, or questions the submitted ones leave open. You can ask the council about these in a comment.</p>
       </div>
       <div class="missing" id="missing"></div>
     </section>
@@ -894,6 +958,7 @@ details.howto > .legend { margin-top: 14px; }
       <div class="qa" id="qa"></div>
     </section>
 
+    </div>
     <section aria-labelledby="h-read">
       <details class="howto"><summary><h2 id="h-read">How to read this page</h2></summary>
       <div class="section-head">
@@ -1058,7 +1123,7 @@ function renderResults(data, ctx) {
     const pn = ctx.omitted.reduce((n, x) => n + (x.to - x.from + 1), 0), fn = ctx.omitted.length;
     warns.push(`<p>${ctx.pagesTotal ? `${ctx.pagesTotal - pn} of ${ctx.pagesTotal} pages were read. ${pn} ${pn === 1 ? "was" : "were"} left out because the documents are too long to read in one go.` : `${pn} ${pn === 1 ? "page" : "pages"} in ${fn} ${fn === 1 ? "file was" : "files were"} too long to read.`}</p><details class="warnmore"><summary>Show which pages</summary><p>${esc(ctx.omitted.map(x => `${x.label} pages ${x.from}\u2013${x.to}`).join("; "))}.</p></details>`);
   }
-  if (ctx.unreadable?.length) warns.push(`<p>${ctx.unreadable.length === 1 ? "1 file had" : ctx.unreadable.length + " files had"} no readable text, so ${ctx.unreadable.length === 1 ? "it was" : "they were"} not read. ${ctx.unreadable.length === 1 ? "It" : "They"} may be scans or photos.</p>`);
+  if (ctx.unreadable?.length) warns.push(`<p>${ctx.unreadable.length === 1 ? "1 file had" : ctx.unreadable.length + " files had"} images only, so ${ctx.unreadable.length === 1 ? "it was" : "they were"} not read. ${ctx.unreadable.length === 1 ? "It" : "They"} may be scans or photos.</p>`);
   $("read-warn").hidden = false;
   $("read-warn").innerHTML = WARN_ICON + `<div><p>The warning triangle means some of the documents could not be fully read. If this page says something isn't covered, it may be in the parts that were not read.</p></div>`;
 
@@ -1109,6 +1174,8 @@ function renderResults(data, ctx) {
   const qa = data.ask_the_application_examples || [];
   $("h-ask").closest("section").hidden = !qa.length;
   $("qa").innerHTML = qa.map(x => `<div><p class="q">${esc(x.q)}</p><div class="a"><p>${esc(x.a)}</p>${tag(x.basis)}</div></div>`).join("");
+  actionsReset(data, ctx);
+  renderDrawings(data, ctx);
 }
 
 function renderTabs() {
@@ -1263,6 +1330,7 @@ function normalise(raw, home) {
     stakeholders: {},
     site_view: { type: "schematic", label: "Simplified diagram based on descriptions in the documents. Positions are approximate and not to scale.", elements: [] },
     missing_items: arr(r.missing_items).map(m => ({ item: str(m?.item), why_it_matters: str(m?.why_it_matters) })).filter(m => m.item),
+    drawings: arr(r.drawings).map(x => ({ kind: ["site_plan", "floor_plans", "elevations"].includes(x?.kind) ? x.kind : "", doc: str(x?.doc).replace(/\s+p\.\d+\s*$/i, "").slice(0, 120), page: Math.round(Number(x?.page)) || 0, title: str(x?.title).slice(0, 120), scale: str(x?.scale).slice(0, 20) })).filter(x => x.kind && x.doc && x.page > 0).slice(0, 7),
     also_covered: arr(r.also_covered).map(a => ({ topic: str(a?.topic).slice(0, 60), statements: arr(a?.statements).map(s => ({ t: str(s?.t), basis: s?.basis === "stated" ? "stated" : "reading", src: str(s?.src) || "(not mentioned)" })).filter(s => s.t).slice(0, 2) })).filter(a => a.topic && a.statements.length).slice(0, 6),
     differences: arr(r.differences).map(x => ({ what: str(x?.what), versions: str(x?.versions), src: str(x?.src) })).filter(x => x.what && x.versions).slice(0, 8),
     ask_the_application_examples: []
@@ -1314,7 +1382,7 @@ const SHAPE = `{
     "address": string,
     "council": string,              // name of the local planning authority, "" if not found
     "council_url": string,          // a web address for the council's planning page or comment page, only if it is written in the documents, otherwise ""
-    "one_liner": string,            // one plain sentence: what is proposed
+    "one_liner": string,            // AI summary of what is proposed: ONE OR TWO short sentences, following the summary rules below
     "headline_facts": [ {"label": string, "value": string, "src": string} ]   // 3 to 6 short key details of what is proposed, only ones the documents state, chosen to suit the kind of application (for example Homes, Height, Parking, Affordable homes for a block of flats; Extension, Purpose, Roof for a house extension). value is a few words, label is 1 to 3 words
   },
   "key_dates": [ {"id": "registered"|"comments_close"|"target_decision"|"committee", "date": "YYYY-MM-DD" or null, "src": string} ],
@@ -1337,6 +1405,7 @@ const SHAPE = `{
     "label": string,                // one sentence callout
     "links_to": "neighbours.<topic>" or null
   } ] },
+  "drawings": [ {"kind": "site_plan"|"floor_plans"|"elevations", "doc": string, "page": number, "title": string, "scale": string} ],
   "also_covered": [ {"topic": string, "statements": [ {"t": string, "basis": "stated"|"reading", "src": string} ]} ],
   "differences": [ {"what": string, "versions": string, "src": string} ],
   "missing_items": [ {"item": string, "why_it_matters": string} ]
@@ -1359,6 +1428,8 @@ RULES
 - key_dates: only dates written in the documents. Otherwise date null and src "". Today is ${todayISO()}.
 - site_view: list the proposed building (kind "footprint", position "centre") and up to 7 neighbouring buildings, roads, green spaces or features the documents describe, with their direction from the site. Use null for position if the direction isn't clear from the documents. Do not invent geometry.
 - missing_items: reports or details you would expect for an application like this that are not among these documents or not covered by them (for example noise assessment, tree survey, construction management plan, daylight and sunlight report, transport statement, flood risk assessment). Only list ones that are relevant to this kind of development.
+- one_liner (the summary): one or two short sentences, never more. Say what it is, where it is and roughly how big. Use only facts the documents state: every number, height, count and use must appear in the documents, so do not round, estimate or combine figures, and leave out any number that isn't stated. Where the documents make it clear, say what is replaced or added ("Replace X with Y", "Add X to Y"). Use plain English with no planning jargon, and neutral words only: no "modern", "much-needed", "sensitive", "high-quality" or other selling words from the applicant. Leave out the applicant's reasons and claimed benefits. Do not judge size, impact or whether the scheme is good or bad. If the proposal can't be pinned down, say "The documents don't give a clear description of what is proposed." Keep the numbers consistent with headline_facts; if they differ, use the cited fact.
+- drawings: pick the pages that show these standard drawings, so the reader can see them. kind "site_plan" is the site plan or block plan (not the location plan). kind "floor_plans" is the proposed floor plans, one entry per sheet, up to 3, preferring proposed over existing. kind "elevations" is the proposed elevations, one entry per sheet, up to 3. Choose a page only when its title is written on the page text or in the document name, for example "Proposed South Elevation". "doc" must be the exact document name from the [name p.N] markers and "page" the page number. "title" is the drawing's title as written. "scale" is the scale as written, such as "1:100", or an empty string if none is stated. Leave a kind out if you can't find it. Never guess a page.
 - reference, key_dates and headline_facts: before you write that something is not stated, search every page below for it. The council reference is often on a receipt, notice or form. Say it is not stated only if no page gives it.
 - also_covered: always check these extra topics and include each one the documents say anything about, with 1 to 2 statements each and a src: "Flood risk and drainage", "Heritage and conservation area", "Size and floor area", "Basement and ground conditions", "Energy and sustainability". Leave out any the documents never mention. Use the same stated and reading rules.
 - differences: compare any figure or fact that is given in more than one place (floor areas, room sizes, heights, dates, numbers of homes or trees, descriptions of the works). If two places disagree, add one item: what it is, what each place says, and the src of both. Do not decide which is right. Return an empty array if none.
@@ -1426,6 +1497,219 @@ $("back").addEventListener("click", e => {
   $("home-clear").click();
   render();
   window.scrollTo(0, 0);
+});
+// ===== Layer 23: drawings =====
+const DRAW_VALID = ["site_plan", "floor_plans", "elevations", "sheet", "other"];
+const DRAW_KINDS = { site_plan: "Site plan", floor_plans: "Floor plan", elevations: "Elevation", sheet: "Drawing" };
+const DRAW_RE = { site_plan: /site\s*(?:plan|layout)|block\s*plan|layout\s*plan|proposed\s*site/i, floor_plans: /floor|level\s*\d|storey|basement|ground\s*(?:floor|level)|roof\s*plan|proposed\s*plans?\b|layouts?\b/i, elevations: /elevation/i };
+let drawToken = 0;
+function findDocFor(label, byLabel) {
+  if (!byLabel) return null;
+  if (byLabel[label]) return byLabel[label];
+  const low = label.toLowerCase();
+  const k = Object.keys(byLabel).find(x => x.toLowerCase() === low) || Object.keys(byLabel).find(x => x.toLowerCase().startsWith(low) || low.startsWith(x.toLowerCase()));
+  return k ? byLabel[k] : null;
+}
+// Keep only picks that point at a real page whose own text or file name backs up the kind
+function checkedDrawings(list, byLabel) {
+  const seen = new Set(), out = [];
+  const order = { site_plan: 0, floor_plans: 1, elevations: 2 };
+  (list || []).forEach(x => {
+    const d = findDocFor(x.doc, byLabel);
+    if (!d || !d.pages || x.page > d.pages) return;
+    const key = d.id + ":" + x.page; if (seen.has(key)) return; seen.add(key);
+    const txt = (d.text && d.text[x.page - 1]) || "";
+    const hay = d.name + " " + txt;
+    if (!DRAW_RE[x.kind].test(hay)) return;
+    out.push(Object.assign({}, x, { d }));
+  });
+  return out.sort((a, b) => order[a.kind] - order[b.kind]).slice(0, 7);
+}
+function shortTitle(t) { return String(t || "").split(/\s*[;\/|]\s*/)[0].trim(); }
+function drawFig(x, i, shown) {
+  return `<figure class="dfig" data-i="${i}"><button type="button" class="dimg wait" ${shown ? 'data-zoom="' + i + '"' : "disabled"} aria-label="${esc(x.title || DRAW_KINDS[x.kind])}, open larger">${shown ? "Loading the drawing…" : "Image not saved"}</button><figcaption><span class="dt" title="${esc(x.title || DRAW_KINDS[x.kind])}">${esc(shortTitle(x.title) || DRAW_KINDS[x.kind])}</span></figcaption></figure>`;
+}
+async function renderDrawings(data, ctx) {
+  try { await renderDrawings0(data, ctx); }
+  catch (e) { $("drawings-sec").hidden = false; $("drawstat").textContent = "The drawings couldn\u2019t be shown (" + (e && e.message ? e.message : "error") + ")."; }
+}
+async function renderDrawings0(data, ctx) {
+  const sec = $("drawings-sec"), grid = $("drawgrid"), my = ++drawToken;
+  grid.innerHTML = ""; $("drawstat").textContent = "";
+  if (ctx.example) { sec.hidden = true; return; }
+  sec.hidden = false;
+  if (ctx.saved || !ctx.docByLabel) {
+    const list = (data.drawings || []);
+    if (!list.length) { sec.hidden = true; return; }
+    grid.innerHTML = list.map((x, i) => drawFig(x, i, false)).join("");
+    return;
+  }
+  const textPicks = checkedDrawings(data.drawings, ctx.docByLabel);
+  const scanned = docs.filter(d => d.status === "scanned" && d.pages && d.file);
+  const named = [], other = [];
+  const used = new Set(textPicks.map(x => x.d.id + ":" + x.page));
+  scanned.forEach(d => {
+    const a = d.ai;
+    const kind = a ? (a.kind === "other" ? "" : a.kind || "sheet") : kindFromName(d.name);
+    if (kind && !used.has(d.id + ":1")) named.push({ kind, d, page: 1, doc: prettyFile(d.name), title: a && a.title ? a.title : prettyFile(d.name), scale: a ? a.scale : "", note: a ? "ai" : "name" });
+    else if (!kind) other.push(d);
+  });
+  const order = { site_plan: 0, floor_plans: 1, elevations: 2, sheet: 3 };
+  const picks = textPicks.concat(named).sort((a, b) => order[a.kind] - order[b.kind]).slice(0, 10);
+  renderDocList(my);
+  if (!picks.length) { sec.hidden = true; return; }
+  grid.innerHTML = picks.map((x, i) => drawFig(x, i, true)).join("");
+  grid._picks = picks;
+  const pdfs = PDFS;
+  for (let i = 0; i < picks.length; i++) {
+    const x = picks[i], btn = grid.querySelector(`[data-i="${i}"] .dimg`);
+    try {
+      x.url = await pageURL(x.d, x.page, 900, pdfs);
+      if (my !== drawToken) return;
+      btn.classList.remove("wait"); btn.innerHTML = `<img alt="${esc((x.title || DRAW_KINDS[x.kind]) + ", " + x.doc + " page " + x.page)}" src="${x.url}">`;
+    } catch (e) {
+      if (my !== drawToken) return;
+      btn.disabled = true; btn.textContent = "This page couldn't be shown";
+    }
+  }
+}
+async function pageURL(d, n, width, pdfs) {
+  if (!pdfs.has(d)) pdfs.set(d, await pdfjs.getDocument({ data: await d.file.arrayBuffer(), isEvalSupported: false }).promise);
+  const page = await pdfs.get(d).getPage(n);
+  const base = page.getViewport({ scale: 1 });
+  const big = page.getViewport({ scale: Math.min(3, width / Math.max(base.width, 1)) });
+  const c = document.createElement("canvas"); c.width = Math.round(big.width); c.height = Math.round(big.height);
+  const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height);
+  await page.render({ canvasContext: g, viewport: big }).promise;
+  page.cleanup();
+  return c.toDataURL("image/jpeg", 0.85);
+}
+function prettyFile(n) {
+  const w = String(n).replace(/\.pdf$/i, "").replace(/[_\-.()[\]]+/g, " ").replace(/\s+/g, " ").trim();
+  return (w && !/^[\w\s]*\d{4,}/.test(w) ? w : "Image-only file").slice(0, 80);
+}
+// A file with no readable text can only be placed by its name
+function kindFromName(n) {
+  if (/elevation/i.test(n)) return "elevations";
+  if (/floor|level\s*\d|storey|basement/i.test(n)) return "floor_plans";
+  if (/site\s*plan|block\s*plan|location\s*plan|site\s*layout/i.test(n)) return "site_plan";
+  if (/drawing|plans?\b|section|architect|layout/i.test(n)) return "sheet";
+  return "";
+}
+
+// ---- Read the titles of image-only files by showing page 1 to Claude
+async function pageBlob(d, n, width) {
+  const u = await pageURL(d, n, width, new Map());
+  const bin = atob(u.split(",")[1]), a = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i);
+  return new Blob([a], { type: "image/jpeg" });
+}
+async function identifyImages() {
+  const data = R; // renderResults has already set R to the report on screen
+  const files = docs.filter(d => d.status === "scanned" && d.pages && d.file && !d.ai).slice(0, 12);
+  if (!files.length) return;
+  const stat = $("drawstat");
+  const say = m => { if (R === data) stat.textContent = m; };
+  const sample = await samplePromise;
+  if (!sample) { say("Claude isn\u2019t available in this view, so the titles of the image-only files weren\u2019t read."); return; }
+  const lim = await sample.limits().catch(() => null);
+  if (!lim || !lim.images) { say("This view can\u2019t send images to Claude, so the titles of the image-only files weren\u2019t read. Reload the page, run the analysis again and allow it if asked."); return; }
+  if (lim.images.mediaTypes && lim.images.mediaTypes.length && !lim.images.mediaTypes.includes("image/jpeg")) { say("This view doesn\u2019t accept the image type needed, so the titles weren\u2019t read."); return; }
+  const per = Math.max(1, Math.min(lim.images.maxCount || 4, 6));
+  say("Reading the titles of the image-only files\u2026");
+  try {
+    for (let i = 0; i < files.length; i += per) {
+      const batch = files.slice(i, i + per);
+      const blobs = [];
+      for (const d of batch) blobs.push(await pageBlob(d, 1, 1600));
+      const raw = await sample.json(
+`The ${batch.length} images are the first page of ${batch.length} files from a UK planning application, in order (image 1 first). Each file is a scan or drawing with no readable text. For each image, report what the page is, using only what is written on the page, usually in the title block.
+Reply with only one JSON object: {"files":[{"n": number, "kind": "site_plan"|"floor_plans"|"elevations"|"sheet"|"other", "title": string, "scale": string, "ref": string}]}
+- kind: "site_plan" for a site plan or block plan, "floor_plans" for floor plans, "elevations" for elevations, "sheet" for any other drawing or a sheet that holds several drawings, "other" if the page is not a drawing (a form, letter, report page or photo).
+- title: the title as written on the page, for example "Proposed Elevations" or "Revised architectural drawings". If no title is legible, write "Title not legible". Do not describe the design and do not judge it.
+- scale: the scale as written, such as "1:100", or an empty string if none is written.
+- ref: the drawing number as written, or an empty string.
+- Never guess. If something is not written on the page, leave it empty.`,
+        { images: blobs, cache: false });
+      (Array.isArray(raw && raw.files) ? raw.files : []).forEach(f => {
+        const d = batch[(Number(f && f.n) || 0) - 1];
+        if (!d) return;
+        const title = String((f && f.title) || "").trim().slice(0, 100), ref = String((f && f.ref) || "").trim().slice(0, 30);
+        d.ai = { kind: DRAW_VALID.includes(f && f.kind) ? f.kind : "sheet", title: title && ref && !title.includes(ref) ? title + " (" + ref + ")" : title, scale: String((f && f.scale) || "").trim().slice(0, 20) };
+      });
+    }
+    if (R !== data) return;
+    data.drawings = (data.drawings || []).concat(files.filter(d => d.ai && d.ai.kind !== "other").map(d => ({ kind: d.ai.kind, doc: prettyFile(d.name), page: 1, title: d.ai.title || prettyFile(d.name), scale: d.ai.scale })));
+    say("");
+    renderDrawings(R, RC);
+  } catch (e) {
+    say("The titles of the image-only files couldn\u2019t be read (" + ((e && (e.code || e.message)) || "error") + ").");
+  }
+}
+// ===== Layer 24: gallery, document list, preview =====
+const PDFS = new Map();
+function docTitle(d) {
+  if (d.ai && d.ai.title) return d.ai.title;
+  const w = prettyFile(d.name);
+  return w === "Image-only file" ? String(d.name).replace(/\.pdf$/i, "") : w;
+}
+function setPane(k) {
+  $("pane-find").hidden = k !== "find"; $("pane-docs").hidden = k !== "docs";
+  ["find", "docs"].forEach(x => $("ptab-" + x).setAttribute("aria-selected", String(x === k)));
+}
+function syncPaneTabs() {
+  const has = !$("drawings-sec").hidden;
+  $("pane-tabs").hidden = !has;
+  if (!has) setPane("find");
+}
+$("pane-tabs").addEventListener("click", e => { const b = e.target.closest("[data-pane]"); if (b) setPane(b.dataset.pane); });
+new MutationObserver(syncPaneTabs).observe($("drawings-sec"), { attributes: true, attributeFilter: ["hidden"] });
+async function renderDocList(my) {
+  return;
+  const list = docs.filter(d => d.status !== "bad" && d.file && d.pages);
+  const sec = $("alldocs-sec"), ul = $("doclist");
+  sec.hidden = !list.length; if (!list.length) return;
+  $("alldocs-n").textContent = list.length;
+  ul.innerHTML = list.map((d, i) => `<li><button type="button" data-prev="${i}"><span class="th" id="th${i}"></span><span><span class="dtt">${esc(docTitle(d))}</span><br><span class="dsub">${d.pages} ${d.pages === 1 ? "page" : "pages"}${d.status === "scanned" ? " · images only" : ""}</span></span><span class="arr" aria-hidden="true">↗</span></button></li>`).join("");
+  ul._list = list;
+  for (let i = 0; i < list.length; i++) {
+    const d = list[i];
+    try {
+      if (!d.thumb) d.thumb = await pageURL(d, 1, 360, PDFS);
+      if (my !== drawToken) return;
+      $("th" + i).innerHTML = `<img alt="" src="${d.thumb}">`;
+    } catch (e) { if (my !== drawToken) return; }
+  }
+}
+let pv = null;
+async function pvShow() {
+  const { d, page } = pv, body = $("pv-body");
+  $("pv-title").textContent = pv.title;
+  $("pv-pg").textContent = "Page " + page + " of " + d.pages;
+  $("pv-prev").disabled = page <= 1; $("pv-next").disabled = page >= d.pages;
+  d.pv = d.pv || {};
+  body.textContent = "Loading…";
+  try {
+    if (!d.pv[page]) d.pv[page] = await pageURL(d, page, 2200, PDFS);
+    if (pv.d !== d || pv.page !== page) return;
+    body.innerHTML = `<img alt="${esc(pv.title)}, page ${page}" src="${d.pv[page]}">`;
+  } catch (e) { body.textContent = "This page couldn’t be shown."; }
+}
+function openPreview(d, n, title) {
+  pv = { d, page: n || 1, title: title || docTitle(d) };
+  const dlg = $("draw-dlg");
+  if (!dlg.open) dlg.showModal();
+  pvShow();
+}
+$("pv-prev").addEventListener("click", () => { if (pv && pv.page > 1) { pv.page--; pvShow(); } });
+$("pv-next").addEventListener("click", () => { if (pv && pv.page < pv.d.pages) { pv.page++; pvShow(); } });
+$("pv-close").addEventListener("click", () => $("draw-dlg").close());
+$("draw-dlg").addEventListener("click", e => { if (e.target === $("draw-dlg")) $("draw-dlg").close(); });
+document.addEventListener("click", e => {
+  const z = e.target.closest("#drawings-sec [data-zoom]");
+  if (z) { const x = ($("drawgrid")._picks || [])[+z.dataset.zoom]; if (x) openPreview(x.d, x.page, x.title || DRAW_KINDS[x.kind]); return; }
+  const p = e.target.closest("#alldocs-sec [data-prev]");
+  if (p) { const d = ($("doclist")._list || [])[+p.dataset.prev]; if (d) openPreview(d, 1, docTitle(d)); }
 });
 // ===== Layer 22 helpers =====
 document.body.classList.add("r2");
@@ -1523,7 +1807,7 @@ async function downloadPdf() {
   put("Planify", 9, "bold", [53, 80, 48], 1);
   put(o.address || o.name || "Planning application", 18, "bold", [40, 36, 30], 1);
   put("Planning application number: " + (o.reference || "not found in the documents"), 9, "normal", [110, 100, 85], 3, "courier");
-  put(o.one_liner || "", 11, "normal", [40, 36, 30], 2);
+  put("AI summary: " + (o.one_liner || ""), 11, "normal", [40, 36, 30], 2);
   (o.headline_facts || []).forEach(f => { put(f.label + ": " + f.value, 10, "bold", [40, 36, 30], 0); put(f.src || "Source not given", 8, "normal", [110, 100, 85], 1.5, "courier", 3); });
 
   head("Key dates");
@@ -1648,7 +1932,7 @@ function statusLine(d) {
     case "reading": return { cls: "busy", icon: "", text: d.pages ? `Reading page ${d.done} of ${d.pages}…` : "Opening…" };
     case "ready": return { cls: "ok", icon: ICONS.ok, text: "Ready. Text found on every page." };
     case "partial": return { cls: "ok", icon: ICONS.ok, text: `Ready. Text found on ${d.withText} of ${d.pages} pages. Pages without text are usually drawings or photos.` };
-    case "scanned": return { cls: "warn", icon: ICONS.warn, text: "No readable text. This looks like a scan or a drawing, so its words can't be read." };
+    case "scanned": return { cls: "warn", icon: ICONS.warn, text: "Images only. This looks like a scan or a drawing, so its words can't be read." };
     default: return { cls: "bad", icon: ICONS.bad, text: d.msg };
   }
 }
@@ -1696,9 +1980,9 @@ function render() {
     const bad = docs.filter(d => d.status === "bad").length;
     $("summary").textContent = reading
       ? `Reading ${plural(docs.length, "document")}…`
-      : `${plural(usable.length, "document")} ready`;
-    const problems = [scanned ? `${scanned} with no readable text` : "", bad ? `${bad} couldn't be opened` : ""].filter(Boolean);
-    $("agg-meta").textContent = [plural(pages, "page") + " of text", ...problems].join(" · ") + (problems.length && !showFiles ? ". Show files to see which." : "");
+      : `${plural(docs.length - bad, "document")} added`;
+    const problems = [scanned ? `${scanned} images only` : "", bad ? `${bad} couldn't be opened` : ""].filter(Boolean);
+    $("agg-meta").textContent = [plural(docs.reduce((n, d) => n + (d.status === "bad" ? 0 : (d.pages || 0)), 0), "page"), ...problems].join(" · ") + (problems.length && !showFiles ? ". Show files to see which." : "");
     const totalPages = readingDocs.reduce((n, d) => n + (d.pages || 0), 0);
     const donePages = readingDocs.reduce((n, d) => n + (d.done || 0), 0);
     $("agg-bar").hidden = !reading;
@@ -2388,7 +2672,8 @@ function collectText(budget) {
     }
     if (cut) omitted.push({ label: p.label, from: cut, to: p.pages.length });
   }
-  return { text, omitted, unreadable: unreadableNames(), pagesTotal: parts.reduce((n, p) => n + p.pages.length, 0) };
+  const docByLabel = {}; parts.forEach((p, i) => { docByLabel[p.label] = usable[i]; });
+  return { text, omitted, unreadable: unreadableNames(), pagesTotal: parts.reduce((n, p) => n + p.pages.length, 0), docByLabel };
 }
 
 const ERRORS = {
@@ -2416,7 +2701,7 @@ $("analyse").addEventListener("click", async () => {
   const limits = await sample.limits().catch(() => null);
   const max = limits?.maxPromptBytes || 262144;
   const promptOverhead = new TextEncoder().encode(buildPrompt("", ["x".repeat(400)], homeSnap)).length;
-  const { text, omitted, unreadable, pagesTotal } = collectText(max - promptOverhead - 2048);
+  const { text, omitted, unreadable, pagesTotal, docByLabel } = collectText(max - promptOverhead - 2048);
   const notes = [];
   if (omitted.length) notes.push("Some pages were left out for length: " + omitted.map(o => `${o.label} pages ${o.from}-${o.to}`).join("; ") + ".");
   if (unreadable.length) notes.push("These files were provided but had no readable text: " + unreadable.join(", ") + ". Don't list them as missing.");
@@ -2433,8 +2718,9 @@ $("analyse").addEventListener("click", async () => {
     const data = normalise(raw, homeSnap);
     if (!data.overview.reference) data.overview.reference = findRef();
     if (data.home) await locateHome(data);
-    renderResults(data, { example: false, omitted, unreadable, pagesTotal, docText: text, notes });
+    renderResults(data, { example: false, omitted, unreadable, pagesTotal, docText: text, notes, docByLabel });
     show("results");
+    identifyImages(data);
   } catch (e) {
     const code = e?.code;
     if (code !== "cancelled") {
