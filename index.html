@@ -829,6 +829,18 @@ body.res .wrap.layout { padding-bottom: 96px; }
 .chatfloat.collapsed .chat-launch { display: none !important; }
 .chatfloat.collapsed { gap: 0; }
 @media print { .float-toggle { display: none !important; } }
+.impact > summary::after, details.howto > summary::after,
+.tmore summary::before, .warnmore summary::before, .how summary::before, #toggle-files::before, #float-toggle::before {
+  content: "+"; display: inline-block; flex: none; box-sizing: content-box; width: 1.2ch; height: auto; border: 0; border-radius: 0; background: none; transform: none; transition: none;
+  font-family: var(--font-mono); font-weight: 500; font-size: inherit; line-height: inherit; letter-spacing: 0; margin: 0; color: inherit;
+}
+.impact[open] > summary::after, details.howto[open] > summary::after, .tmore[open] summary::before, .warnmore[open] summary::before, .how[open] summary::before,
+#toggle-files[aria-expanded="true"]::before, #float-toggle[aria-expanded="true"]::before { content: "\2013"; transform: none; }
+.tmore summary, .warnmore summary, .how summary { display: inline-flex; align-items: baseline; gap: 4px; text-decoration: none; }
+#toggle-files, #float-toggle { display: inline-flex; align-items: baseline; gap: 4px; }
+details.howto > summary { justify-content: flex-start; gap: 10px; }
+details.howto > summary::after { font-size: 1.25rem; color: #355030; margin: 0; width: 1.2ch; }
+.impact > summary::after { font-size: 1.1rem; color: var(--muted); }
 </style>
 
 <nav class="appbar" aria-label="App">
