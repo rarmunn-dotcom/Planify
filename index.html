@@ -1,4 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head><body>
 <title>Neighbourhood Impact Simulator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -687,6 +688,171 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
 .warnbox p { margin: 0; }
 .warnmore summary { cursor: pointer; font-size: .85rem; text-decoration: underline; }
 .warnmore p { font-size: .82rem; margin-top: 6px; }
+/* ===== Layer 22: one scale, left-aligned, new layout ===== */
+body.r2 { --t1: .75rem; --t2: .875rem; --t3: 1rem; --t4: 1.25rem; --t5: 1.75rem;
+  --ref: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --amb: #8a5a00; --amb-bg: #fbe7b0; --amb-line: #e9b949; --grn: #2f4a2a; --grn-bg: #dcebc6; --grn-line: #8fb36b; }
+body.r2.res { font-size: var(--t3); line-height: 1.55; }
+body.r2.res .wrap { max-width: 980px; }
+body.r2.res main .wrap.layout { grid-template-columns: minmax(0, 1fr); padding-block: 28px 72px; }
+body.r2.res .col-side { display: none; }
+body.r2.res .col-main { gap: 44px; max-width: none; }
+body.r2.res, body.r2.res .wrap, body.r2.res .wrap * { text-align: left; }
+body.r2.res .btn { text-align: center; }
+body.r2.res h1.pj-t { font-size: var(--t5); line-height: 1.15; }
+body.r2.res h2 { font-size: var(--t4); line-height: 1.25; font-weight: 600; letter-spacing: -.01em; }
+body.r2.res h3 { font-size: var(--t3); line-height: 1.35; font-weight: 600; letter-spacing: 0; }
+body.r2.res p, body.r2.res li, body.r2.res summary { font-size: var(--t3); }
+body.r2.res .eyebrow, body.r2.res .chip, body.r2.res .tag, body.r2.res .pj-mode { font-size: var(--t1); }
+body.r2.res .smallnote, body.r2.res .section-head p, body.r2.res .tsum, body.r2.res .msum, body.r2.res .hfact span, body.r2.res .legend p, body.r2.res footer, body.r2.res .tnote { font-size: var(--t2); }
+body.r2.res .src, body.r2.res .rs, body.r2.res .pj-s, body.r2.res .refnum, body.r2.res .tl-src { font-family: var(--ref); font-size: var(--t1); letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 400; }
+body.r2.res .tag { font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 500; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+body.r2.res .chip { padding: 6px 10px; }
+body.r2.res .section-head { gap: 4px; }
+body.r2.res .section-head p { max-width: 62ch; }
+mark.amb, mark.grn { color: inherit; border-radius: 4px; padding: 1px 4px; margin: 0 -4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+mark.amb { background: var(--amb-bg); box-shadow: inset 0 -2px 0 var(--amb-line); }
+mark.grn { background: var(--grn-bg); box-shadow: inset 0 -2px 0 var(--grn-line); }
+b.fig { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Header */
+body.r2.res .pj-top .wrap { gap: 18px; padding-block: 26px 28px; }
+body.r2.res .appl { display: grid; gap: 14px; justify-content: stretch; align-items: start; }
+body.r2.res .appl-main { gap: 4px; }
+body.r2.res .appl-ref { justify-items: start; text-align: left; gap: 3px; }
+body.r2.res .refnum { font-size: var(--t2); background: none; border: 0; padding: 0; border-radius: 0; color: var(--ink); }
+body.r2.res .prop { padding: 20px 22px; gap: 12px; border-radius: 18px; }
+body.r2.res .prop-lead { font-size: var(--t3); line-height: 1.6; font-weight: 400; letter-spacing: 0; max-width: 68ch; }
+body.r2.res .pfacts { gap: 0; padding-top: 4px; }
+body.r2.res .pfact { grid-template-columns: 11rem minmax(0, 1fr); gap: 2px 20px; padding: 12px 0; align-items: baseline; }
+body.r2.res .pfact .eyebrow { grid-row: 1 / span 2; align-self: start; padding-top: 3px; }
+body.r2.res .pfact b { font-size: var(--t3); font-weight: 700; letter-spacing: 0; }
+body.r2.res .pfact .pj-s { grid-column: 2; text-align: left; }
+@media (max-width: 640px) { body.r2.res .pfact { grid-template-columns: minmax(0, 1fr); } body.r2.res .pfact .eyebrow { grid-row: auto; } body.r2.res .pfact .pj-s { grid-column: 1; } }
+.pj-actions { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.pj-actions .smallnote { margin: 0; color: var(--muted); }
+.pj-actions .smallnote.err { color: var(--amb); }
+
+/* At a glance */
+.glance { display: grid; gap: 18px; }
+.g-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
+.g-tile { background: #fffdf8; border: 1px solid #e7dec9; border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.g-tile b { font-size: var(--t4); font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.g-tile span { font-size: var(--t2); color: var(--muted); }
+.g-tile.low { background: var(--amb-bg); border-color: var(--amb-line); }
+.g-tile.low span { color: #6a4300; }
+.g-tile.good { background: var(--grn-bg); border-color: var(--grn-line); }
+.g-tile.good span { color: #2f4a2a; }
+.g-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g-card { background: #fffdf8; border: 1px solid #e7dec9; border-radius: 18px; padding: 18px 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.g-card.wide { grid-column: 1 / -1; }
+.g-card h3 { margin: 0; font-size: var(--t3); }
+@media (max-width: 760px) { .g-grid { grid-template-columns: minmax(0, 1fr); } }
+.tl { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; }
+.tl-i { position: relative; display: grid; gap: 3px; align-content: start; padding: 22px 14px 0 0; }
+.tl-i::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: #cfc3a6; }
+.tl-i:last-child::before { right: 50%; }
+.tl-i .dot { position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #fffdf8; border: 2px solid #355030; }
+.tl-i.past .dot { background: #355030; }
+.tl-i.key .dot { background: var(--grn-line); border-color: #355030; width: 18px; height: 18px; top: -1px; }
+.tl-i.today .dot { border-color: var(--amb-line); background: var(--amb-bg); }
+.tl-i.today .tl-d { color: var(--amb); }
+.tl-l { font-size: var(--t2); color: var(--muted); }
+.tl-d { font-size: var(--t3); font-weight: 700; font-variant-numeric: tabular-nums; }
+.tl-n { font-size: var(--t2); font-weight: 600; color: var(--grn); }
+.tl-n.low { color: var(--amb); }
+.tl-unk { margin: 0; font-size: var(--t2); color: var(--amb); display: flex; gap: 8px; align-items: center; }
+.tl-unk::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px dashed var(--amb-line); }
+@media (max-width: 640px) { .tl { grid-auto-flow: row; } .tl-i { padding: 0 0 18px 28px; } .tl-i::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; } .tl-i:last-child::before { bottom: auto; height: 16px; } .tl-i .dot { top: 2px; } }
+.kf { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.kf li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 2px 14px; padding: 10px 0; border-top: 1px solid #efe7d4; align-items: baseline; }
+.kf li:first-child { border-top: 0; padding-top: 0; }
+.kf .k { font-size: var(--t2); color: var(--muted); }
+.kf .v { font-weight: 700; }
+.kf .rs { grid-column: 2; }
+.cv-row { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 7.5rem; gap: 12px; align-items: center; padding: 7px 0; }
+.cv-n { font-size: var(--t2); }
+.cv-bar { height: 12px; border-radius: 999px; background: #efe7d4; overflow: hidden; display: block; }
+.cv-bar i { display: block; height: 100%; border-radius: 999px; }
+.cv-strong i { width: 100%; background: #355030; }
+.cv-partial i { width: 55%; background: #8fb36b; }
+.cv-none { background: transparent; box-shadow: inset 0 0 0 1.5px var(--amb-line); }
+.cv-none i { width: 0; }
+.cv-l { font-size: var(--t2); font-weight: 600; }
+.cv-l.none { color: var(--amb); }
+@media (max-width: 520px) { .cv-row { grid-template-columns: minmax(0, 1fr) 6.5rem; } .cv-bar { grid-column: 1 / -1; order: 3; } }
+.split { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #efe7d4; }
+.split i { display: block; height: 100%; }
+.split .docs { background: #355030; }
+.split .rd { background: #c9b98f; }
+.split-key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--t2); color: var(--muted); }
+.split-key b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: baseline; }
+.sw.docs { background: #355030; } .sw.rd { background: #c9b98f; }
+.byd { display: grid; gap: 6px; }
+.byd-row { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) 2.2rem; gap: 12px; align-items: center; }
+.byd-n { font-size: var(--t2); overflow-wrap: anywhere; }
+.byd-bar { height: 10px; border-radius: 999px; background: #efe7d4; display: block; overflow: hidden; }
+.byd-bar i { display: block; height: 100%; background: #6f8f56; border-radius: 999px; }
+.byd-c { font-size: var(--t2); font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .byd-row { grid-template-columns: minmax(0, 1fr) 2.2rem; } .byd-bar { grid-column: 1 / -1; order: 3; } }
+
+/* Topic dropdowns */
+body.r2.res .trows { border-radius: 18px; background: #fffdf8; border-color: #e7dec9; }
+body.r2.res .trow { display: block; padding: 0; border-top: 1px solid #e7dec9; }
+body.r2.res .trow:first-child { border-top: 0; }
+.tdd > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto; gap: 8px 18px; align-items: start; padding: 16px 18px; }
+.tdd > summary::-webkit-details-marker { display: none; }
+.tdd > summary::after { content: ""; display: none; }
+.tdd .tp { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.tdd .tp .tpic { width: 34px; height: 34px; flex: none; border-radius: 10px; }
+.tdd .tname { font-weight: 600; }
+.tdd .tsum { color: var(--ink); line-height: 1.5; }
+.tdd .tstat { display: flex; gap: 10px; align-items: center; justify-self: end; }
+.tdd .tstat::after { content: ""; width: 9px; height: 9px; border-right: 2px solid #6a5f54; border-bottom: 2px solid #6a5f54; transform: rotate(45deg); margin: -4px 2px 0 6px; transition: transform .15s; }
+.tdd[open] .tstat::after { transform: rotate(-135deg); margin-top: 3px; }
+.tdd > summary:focus-visible, .miss > summary:focus-visible { outline: 3px solid #355030; outline-offset: -3px; border-radius: 14px; }
+.tdd .tbody { display: grid; gap: 14px; padding: 2px 18px 18px calc(18px + 34px + 10px); }
+.tdd .tline { display: grid; gap: 4px; }
+.tdd .tline .tw { display: flex; gap: 6px 10px; flex-wrap: wrap; }
+.tdd .tline p { margin: 0; max-width: 66ch; }
+.tdd .tsub { font-size: var(--t1); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-family: var(--font-mono); margin-top: 4px; }
+@media (max-width: 720px) { .tdd > summary { grid-template-columns: minmax(0, 1fr) auto; } .tdd .tsum { grid-column: 1 / -1; grid-row: 2; } .tdd .tbody { padding-left: 18px; } }
+.dd-tools { display: flex; justify-content: flex-start; margin-bottom: 8px; }
+.dd-tools button { font: inherit; font-size: var(--t2); color: #355030; background: none; border: 0; padding: 4px 0; text-decoration: underline; cursor: pointer; }
+
+/* Not in the application */
+body.r2.res .missing { display: block; border-radius: 18px; }
+body.r2.res .missing > p { margin: 0; padding: 16px 18px; }
+body.r2.res .missing > .mhead2 { border-bottom: 1px solid #e7dec9; color: var(--ink); }
+body.r2.res details.miss { display: block; padding: 0; border: 0; border-top: 1px solid #e7dec9; border-radius: 0; background: transparent; box-shadow: none; }
+body.r2.res .missing > .mhead2 + details.miss { border-top: 0; }
+.miss > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; padding: 14px 18px; }
+.miss > summary::-webkit-details-marker { display: none; }
+.miss .mt { display: grid; gap: 2px; min-width: 0; }
+.miss .mname { font-weight: 600; }
+.miss .msum { color: var(--muted); }
+.miss .mchev { width: 9px; height: 9px; border-right: 2px solid #6a5f54; border-bottom: 2px solid #6a5f54; transform: rotate(45deg); margin-top: 6px; transition: transform .15s; }
+.miss[open] .mchev { transform: rotate(-135deg); margin-top: 10px; }
+.miss .mico { color: #8a5a00; }
+.miss .mbody { padding: 0 18px 16px calc(18px + 24px + 14px); display: grid; gap: 8px; }
+.miss .mbody p { margin: 0; max-width: 66ch; }
+.miss .mhint { font-size: var(--t2); color: var(--muted); }
+@media (max-width: 640px) { .miss .mbody { padding-left: 18px; } }
+.legend-hl p { margin: 0; }
+
+/* Saved applications and landing page */
+.saved { display: grid; gap: 12px; margin-top: 8px; }
+.saved h2 { font-size: var(--t4); margin: 0; }
+.savedlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.saveditem { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; background: #fffefa; border: 1px solid #d9e8df; border-radius: 14px; padding: 12px 14px; text-align: left; }
+.saveditem .open { font: inherit; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; color: inherit; display: grid; gap: 2px; min-width: 0; }
+.saveditem .open b { font-weight: 600; overflow-wrap: anywhere; }
+.saveditem .open span { font-size: .8rem; color: #55655d; }
+.saveditem .open .rf { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: .75rem; }
+.saveditem .rmv { font: inherit; font-size: .85rem; background: none; border: 0; color: #55655d; text-decoration: underline; cursor: pointer; padding: 6px; }
+.saved-note { font-size: .8rem; color: #55655d; margin: 0; }
+@media print { .pj-actions, .dd-tools { display: none !important; } details.tdd > .tbody, details.miss > .mbody { display: grid !important; } }
 </style>
 
 <nav class="appbar" aria-label="App">
@@ -753,6 +919,12 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
       <details class="how"><summary>How this is used</summary><p class="small">Your postcode is sent to postcodes.io, and the address list comes from OpenStreetMap, so it can be incomplete. If you add an address, it is sent to Claude along with the document text. Nothing is saved.</p></details>
     </section>
 
+    <section class="saved" id="saved-sec" aria-labelledby="h-saved" hidden>
+      <h2 id="h-saved">Saved applications</h2>
+      <ul class="savedlist" id="saved-list"></ul>
+      <p class="saved-note">Saved in this browser only. Opening one shows the saved report. To ask questions about it, analyse the documents again.</p>
+    </section>
+
     <section class="tips" aria-label="Help">
       <div><h3>Where to find the documents</h3><p>On your council's planning website, search for the application reference or address. The documents are usually listed under a "Documents" tab.</p></div>
       <div><h3>What happens to your files</h3><p>Files are opened in your browser to check they can be read. When you choose Analyse, the text from them is sent to Claude, through this site's small relay, to write the summary. Nothing is stored. The files themselves aren't uploaded or stored.</p></div>
@@ -771,6 +943,11 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
       <div class="appl-ref"><span class="eyebrow">Planning application number</span><span class="refnum" id="ref"></span></div>
       <span class="pj-mode" id="mode" hidden></span>
     </div>
+    <div class="pj-actions" id="pj-actions">
+      <button type="button" class="btn small" id="save-btn">Save to my list</button>
+      <button type="button" class="btn small" id="pdf-btn">Download PDF</button>
+      <span class="smallnote" id="act-msg" role="status"></span>
+    </div>
     <section class="prop" aria-label="What is proposed">
       <span class="eyebrow">What is proposed</span>
       <p class="prop-lead" id="oneliner"></p>
@@ -783,7 +960,21 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
   <div class="wrap layout">
   <div class="col-main">
 
-    <section aria-labelledby="h-dates">
+    <section class="glance" id="glance" aria-labelledby="h-glance">
+      <div class="section-head">
+        <h2 id="h-glance">At a glance</h2>
+        <p id="glance-sub"></p>
+      </div>
+      <div class="g-stats" id="g-stats"></div>
+      <div class="g-grid">
+        <div class="g-card wide"><h3>Key dates</h3><div id="g-dates"></div><p class="smallnote" id="g-checked"></p></div>
+        <div class="g-card"><h3>Key facts</h3><div id="g-facts"></div></div>
+        <div class="g-card"><h3>How much the documents cover</h3><div id="g-cov"></div><p class="smallnote">Coverage shows how much the documents say about a topic. It does not measure harm or benefit.</p></div>
+        <div class="g-card wide"><h3>Where the points come from</h3><div id="g-src"></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-dates" hidden>
       <div class="section-head"><h2 id="h-dates">Key dates</h2></div>
       <div class="dates" id="dates"></div>
       <p class="smallnote" id="checked"></p>
@@ -832,8 +1023,9 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
         <p>Every line below is taken from the application documents and names its source page. Nothing here is a judgement on whether the scheme is good or bad.</p>
       </div>
       <div class="legend">
-        <div><span class="tag stated">Stated</span><p>The documents say this in writing, or clearly say nothing about it.</p></div>
-        <div><span class="tag reading">Reading</span><p>Our interpretation of the drawings and plans. Check the source if it matters to you.</p></div>
+        <div><span class="tag stated">From the documents</span><p>The documents say this in writing, or clearly say nothing about it.</p></div>
+        <div><span class="tag reading">Our reading</span><p>Our interpretation of the drawings and plans. Check the source if it matters to you.</p></div>
+        <div class="legend-hl"><span class="tag stated">Highlights</span><p><mark class="grn">Green</mark> marks the main finding for a topic. <mark class="amb">Amber</mark> marks something missing, not covered or below the recommended standard. <b class="fig">Bold</b> marks figures. Page references are in a typewriter font.</p></div>
         <div id="read-warn" class="warnbox" hidden></div>
         <div><span class="meter strong"><i></i><i></i></span><p><b>Well covered.</b> The documents assess this topic in detail.</p></div>
         <div><span class="meter partial"><i></i><i></i></span><p><b>Partly covered.</b> The topic is mentioned, or only partly assessed.</p></div>
@@ -883,6 +1075,7 @@ body.res { --shadow: 0 1px 2px rgba(20, 50, 35, .05), 0 4px 14px rgba(20, 50, 35
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 const DATA = {"meta":{"note":"FICTIONAL EXAMPLE FOR DESIGN REFERENCE ONLY","analysed_on":"2026-11-01","last_checked_council_record":"2026-11-01"},"overview":{"name":"Example Road Residential Block","reference":"EX/2026/0142","address":"40-46 Example Road, Example Borough","one_liner":"Replace a single-storey shop with a 14-storey building of 62 flats and a ground-floor commercial unit.","headline_facts":[{"label":"Homes","value":"62","src":"Planning Statement p.4"},{"label":"Height","value":"14 storeys","src":"Design and Access Statement p.9"},{"label":"Affordable homes","value":"12 (19%)","src":"Planning Statement p.11"}]},"key_dates":[{"id":"registered","label":"Application registered","date":"2026-10-26","src":"Council record","status":"past"},{"id":"comments_close","label":"Comments close","date":"2026-11-23","days_left":22,"src":"Council record","status":"upcoming","highlight":true},{"id":"target_decision","label":"Target decision date","date":"2027-01-25","src":"Council record","status":"upcoming"},{"id":"committee","label":"Planning committee","date":null,"display":"Not stated","status":"unknown"}],"stakeholders":{"neighbours":{"label":"Neighbours","intro":"Homes next to or opposite the site, mainly Numbers 10-14 Example Road and the flats at Number 12.","impacts":{"daylight":{"evidence":"strong","statements":[{"t":"The daylight report tested 8 neighbouring windows. 3 fall below the recommended level.","basis":"stated","src":"Daylight Report p.14"},{"t":"The 3 windows are ground and first floor, facing the site at Number 12.","basis":"stated","src":"Daylight Report p.15"}]},"privacy":{"evidence":"partial","statements":[{"t":"North-facing balconies on floors 3 to 14 look towards the rear gardens of Numbers 10-14.","basis":"reading","src":"Floor Plans p.6, Elevations p.2"},{"t":"No screening or privacy measures are described.","basis":"stated","src":"Design and Access Statement (not mentioned)"}]},"traffic_noise":{"evidence":"partial","statements":[{"t":"The building is described as car-free apart from 2 accessible bays. The documents don't say whether future residents will be barred from on-street parking permits.","basis":"stated","src":"Transport Statement p.7"},{"t":"About 4 delivery trips a day are expected for the commercial unit.","basis":"stated","src":"Transport Statement p.10"},{"t":"No noise assessment or construction plan was submitted, so building noise, working hours and lorry routes are unknown.","basis":"stated","src":"Validation checklist"}]},"green_space":{"evidence":"partial","statements":[{"t":"The site currently has a shop and hardstanding with 2 street trees at the front.","basis":"reading","src":"Existing Site Plan p.1"},{"t":"The landscape statement shows 3 new trees. It doesn't say whether the 2 existing trees stay.","basis":"stated","src":"Landscape Statement p.5"}]},"accessibility":{"evidence":"partial","statements":[{"t":"The pavement outside the site narrows to 1.1m beside the loading bay.","basis":"reading","src":"Site Plan p.2"},{"t":"Temporary pavement closures during construction are not described.","basis":"stated","src":"(not mentioned)"}]}}},"accessibility_needs":{"label":"People with accessibility needs","intro":"Wheelchair users, people with limited mobility, parents with pushchairs, people with visual impairments.","impacts":{"daylight":{"evidence":"none","statements":[{"t":"No information on daylight in shared or outdoor spaces used by people with accessibility needs.","basis":"stated","src":"(not mentioned)"}]},"privacy":{"evidence":"none","statements":[{"t":"No information on privacy of ground-floor accessible homes or entrances.","basis":"stated","src":"(not mentioned)"}]},"traffic_noise":{"evidence":"partial","statements":[{"t":"A loading bay is on the east side of the building, where the pavement narrows. Deliveries could mix with people on foot.","basis":"reading","src":"Site Plan p.2, Transport Statement p.10"}]},"green_space":{"evidence":"partial","statements":[{"t":"The communal courtyard is described as 420 sq m. Step-free access to it is not confirmed.","basis":"stated","src":"Landscape Statement p.4"}]},"accessibility":{"evidence":"strong","statements":[{"t":"A step-free entrance and 2 lifts serve all floors.","basis":"stated","src":"Floor Plans p.3, Design and Access Statement p.14"},{"t":"2 accessible parking bays are proposed for 62 homes. The documents don't say how many homes are wheelchair adaptable.","basis":"stated","src":"Transport Statement p.7"}]}}},"local_businesses":{"label":"Local businesses","intro":"Shops and services on Example Road and nearby streets.","impacts":{"daylight":{"evidence":"none","statements":[{"t":"No assessment of effects on neighbouring commercial premises.","basis":"stated","src":"(not mentioned)"}]},"privacy":{"evidence":"none","statements":[{"t":"Not assessed for commercial neighbours.","basis":"stated","src":"(not mentioned)"}]},"traffic_noise":{"evidence":"partial","statements":[{"t":"Servicing is planned from the loading bay on Example Road, about 4 trips a day.","basis":"stated","src":"Transport Statement p.10"},{"t":"Construction deliveries, road or kerb closures and their timing are not covered, which could affect customer access.","basis":"stated","src":"(not mentioned)"}]},"green_space":{"evidence":"none","statements":[{"t":"No details relevant to nearby businesses.","basis":"stated","src":"(not mentioned)"}]},"accessibility":{"evidence":"partial","statements":[{"t":"A new commercial unit of about 180 sq m is proposed at ground floor. Its use class isn't specified.","basis":"stated","src":"Planning Statement p.5"},{"t":"The 62 new homes would add residents who live next to the shops.","basis":"reading","src":"Planning Statement p.4"}]}}},"future_residents":{"label":"Future residents","intro":"People who would live in or use the new building.","impacts":{"daylight":{"evidence":"partial","statements":[{"t":"14 of the 62 flats are single aspect and face north.","basis":"stated","src":"Design and Access Statement p.12"},{"t":"The documents don't include daylight results for rooms inside the new flats.","basis":"stated","src":"(not mentioned)"}]},"privacy":{"evidence":"none","statements":[{"t":"No detail on overlooking between flats or into the courtyard.","basis":"stated","src":"(not mentioned)"}]},"traffic_noise":{"evidence":"none","statements":[{"t":"No noise assessment, so noise from the road and the commercial unit is unknown.","basis":"stated","src":"Validation checklist"}]},"green_space":{"evidence":"strong","statements":[{"t":"A 420 sq m communal courtyard is proposed, plus private balconies on most flats.","basis":"stated","src":"Landscape Statement p.4"}]},"accessibility":{"evidence":"partial","statements":[{"t":"124 cycle parking spaces are proposed.","basis":"stated","src":"Transport Statement p.8"},{"t":"12 affordable homes (19%) are proposed, below the 35% target the Planning Statement itself cites.","basis":"stated","src":"Planning Statement p.11"}]}}}},"site_view":{"type":"schematic","label":"Simplified diagram based on submitted plans. Not to scale.","elements":[{"id":"proposed","kind":"footprint","position":"centre","short":"Proposed building","label":"Proposed building, 14 storeys"},{"id":"no12","kind":"neighbour","position":"north","short":"No. 12","label":"Number 12, 3 windows below recommended daylight","links_to":"neighbours.daylight"},{"id":"gardens","kind":"green","position":"north","short":"Rear gardens","label":"Rear gardens of Numbers 10-14, north balconies face here","links_to":"neighbours.privacy"},{"id":"loading","kind":"road","position":"south","short":"Example Road, loading bay","label":"Loading bay, pavement narrows to 1.1m","links_to":"accessibility_needs.accessibility"},{"id":"trees","kind":"green","position":"south","short":"Street trees","label":"2 existing street trees, retention not stated","links_to":"neighbours.green_space"}]},"missing_items":[{"item":"Noise assessment","why_it_matters":"Building noise, and noise from the road and commercial unit, can't be judged."},{"item":"Construction management plan","why_it_matters":"Working hours, lorry routes and pavement closures are unknown."},{"item":"Tree survey","why_it_matters":"It's unclear whether the 2 existing street trees stay."},{"item":"Sunlight to neighbouring gardens","why_it_matters":"Only window daylight was tested. Overshadowing of gardens was not."},{"item":"Screening details for balconies","why_it_matters":"Privacy measures for Numbers 10-14 are not described."}],"ask_the_application_examples":[{"q":"Will this block light to my garden?","a":"The application doesn't say. The daylight report tests windows only, not gardens (Daylight Report p.3).","basis":"stated"},{"q":"How many homes are affordable?","a":"12 of 62, which is 19% (Planning Statement p.11).","basis":"stated"},{"q":"Will there be construction noise at night?","a":"The application doesn't say. No construction management plan or noise assessment was submitted.","basis":"stated"}]};
 const EXAMPLE = DATA;
@@ -908,7 +1101,7 @@ const GROUPS = {
 };
 const DATE_LABELS = { registered: "Application registered", comments_close: "Comments close", target_decision: "Target decision date", committee: "Planning committee" };
 const COVERAGE = { strong: "Well covered", partial: "Partly covered", none: "Not covered" };
-const BASIS = { stated: "Stated", reading: "Reading" };
+const BASIS = { stated: "From the documents", reading: "Our reading" };
 const KINDS = ["footprint", "neighbour", "road", "green", "other"];
 const POS = { "north-west": [0, 0], north: [1, 0], "north-east": [2, 0], west: [0, 1], centre: [1, 1], east: [2, 1], "south-west": [0, 2], south: [1, 2], "south-east": [2, 2] };
 
@@ -1021,19 +1214,18 @@ function renderResults(data, ctx) {
   councilLink(data.overview, !!ctx.example);
   samplePromise.then(sm => { if (!sm) $("addr-launch").classList.add("addr-off"); });
 
-  $("missing").innerHTML = data.missing_items.length
-    ? data.missing_items.map(m => `<div class="miss"><span class="mico">${WARN_ICON}</span><h3>${esc(m.item)}</h3><p>${esc(m.why_it_matters)}</p></div>`).join("")
-    : `<p>No expected reports were found to be missing.</p>`;
+  $("missing").innerHTML = missingHTML(data);
 
   const ac = data.also_covered || [], df = data.differences || [];
   $("also-sec").hidden = !ac.length;
-  $("alsos").innerHTML = ac.map(a => `<div class="alsorow"><h3>${esc(a.topic)}</h3>${a.statements.map(s => `<div class="al">${tag(s.basis)}<p>${esc(s.t)}</p><span class="rs">${esc(srcText(s.src).text)}</span></div>`).join("")}</div>`).join("");
+  $("alsos").innerHTML = ac.map(a => `<div class="alsorow"><h3>${esc(a.topic)}</h3>${a.statements.map(s => `<div class="al">${tag(s.basis)}<p>${hl(s.t)}</p><span class="rs">${esc(srcText(s.src).text)}</span></div>`).join("")}</div>`).join("");
   $("diff-sec").hidden = !df.length;
   $("diffs").innerHTML = df.map(x => `<div class="diffrow"><span class="mico">${WARN_ICON}</span><h3>${esc(x.what)}</h3><p>${esc(x.versions)}</p><span class="rs">${esc(x.src || "")}</span></div>`).join("");
 
   const qa = data.ask_the_application_examples || [];
   $("h-ask").closest("section").hidden = !qa.length;
   $("qa").innerHTML = qa.map(x => `<div><p class="q">${esc(x.q)}</p><div class="a"><p>${esc(x.a)}</p>${tag(x.basis)}</div></div>`).join("");
+  renderGlance(data, ctx); actionsReset(data, ctx);
 }
 
 function renderTabs() {
@@ -1343,6 +1535,7 @@ $("back").addEventListener("click", e => {
   e.preventDefault();
   chatRun?.abort(); chatRun = null;
   show("upload");
+  renderSaved();
   docs.length = 0; showFiles = false;
   $("pdfs").value = "";
   $("analyse-msg").hidden = true;
@@ -1351,6 +1544,245 @@ $("back").addEventListener("click", e => {
   render();
   window.scrollTo(0, 0);
 });
+// ===== Layer 22 helpers =====
+document.body.classList.add("r2");
+
+const MONTHS_RE = "Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?";
+const UNIT_RE = "%|per cent|sq\\.? ?m|sqm|m²|m2|m³|metres?|meters?|storeys?|floors?|homes?|flats?|dwellings?|units?|windows?|trees?|days?|weeks?|months?|hours?|spaces?|bedrooms?|rooms?|kW|kg|ha|hectares?|m";
+const FIG_RE = new RegExp("(?<![\\w.])(?!(?:19|20)\\d\\d\\b)\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?:\\s?(?:" + UNIT_RE + ")(?![a-z]))?(?!\\s+(?:" + MONTHS_RE + ")\\b)", "gi");
+const LOW_RE = /\b(below|falls? short|fall short|does not meet|do not meet|fail(?:s|ed|ure)?|exceed(?:s|ed)?|breach(?:es|ed)?|not (?:been )?(?:provided|assessed|submitted|stated|covered|included|found|mentioned|tested|given)|no [a-z ,-]{0,40}(?:provided|submitted|found|assessed|given)|missing|lacks?|unclear|not clear|disagree|conflict|loss of|overshadow|reduc(?:ed|tion) (?:in )?(?:daylight|sunlight|light)|do(?:es)? not cover|don't cover|doesn't cover|worse|harm)\b/i;
+const lowSignal = t => LOW_RE.test(String(t || ""));
+const figs = raw => esc(raw).replace(FIG_RE, m => `<b class="fig">${m}</b>`);
+function hl(raw, cls) {
+  if (cls === undefined) cls = lowSignal(raw) ? "amb" : "";
+  const h = figs(raw);
+  return cls ? `<mark class="${cls}">${h}</mark>` : h;
+}
+function firstSentence(t) {
+  t = String(t || "").trim();
+  const m = t.match(/^.*?[.!?](?=\s|$)/);
+  const s = m ? m[0] : t;
+  return s.length > 170 ? s.slice(0, 167).replace(/\s+\S*$/, "") + "…" : s;
+}
+function dirFact(h) {
+  if (h.distance_m == null) return ["Direction", "Not worked out", "From your home"];
+  if (h.direction) return ["Direction", "The site is to the " + h.direction, "From your home"];
+  return ["Direction", "Too close to tell", "Under 30 metres apart, so no direction is given"];
+}
+
+// "Not in the application": one dropdown per item, with a one-line summary on top
+function missingHTML(data) {
+  const items = data.missing_items || [];
+  if (!items.length) return `<p>No expected reports were found to be missing.</p>`;
+  const n = items.length;
+  return `<p class="mhead2"><b class="fig">${n}</b> ${n === 1 ? "thing" : "things"} a resident might expect ${n === 1 ? "was" : "were"} not found. Open each one to see why it matters.</p>` +
+    items.map(m => `<details class="miss"><summary><span class="mico">${WARN_ICON}</span><span class="mt"><b class="mname">${esc(m.item)}</b><span class="msum">${hl(firstSentence(m.why_it_matters), "amb")}</span></span><span class="mchev" aria-hidden="true"></span></summary><div class="mbody"><p>${hl(m.why_it_matters, "")}</p><p class="mhint">You can ask the council about this in a comment.</p></div></details>`).join("");
+}
+
+// open / close every topic at once
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-ddall]");
+  if (!b) return;
+  const open = b.dataset.ddall === "open";
+  document.querySelectorAll("#homebox details.tdd").forEach(d => { d.open = open; });
+});
+
+// ---------- At a glance ----------
+function docNames(src) {
+  if (!src || /not mentioned/i.test(src)) return [];
+  return String(src).split(/\s*[;,]\s*(?=[A-Z])/).map(x => x.replace(/\s+(?:pp?\.?|pages?)\s*[\d\s,\-–]+$/i, "").trim()).filter(Boolean);
+}
+function pointsOf(d) {
+  const keep = s => s && s.src && !/not mentioned/i.test(s.src);
+  const nb = d.stakeholders.neighbours.impacts, out = [];
+  Object.keys(TOPICS).forEach(t => (nb[t]?.statements || []).filter(keep).forEach(s => out.push(s)));
+  (d.also_covered || []).forEach(a => (a.statements || []).filter(keep).forEach(s => out.push(s)));
+  (d.home?.statements || []).filter(keep).forEach(s => out.push(s));
+  return out;
+}
+function daysText(n) { return n > 1 ? `${n} days left` : n === 1 ? "1 day left" : n === 0 ? "Closes today" : "Closed"; }
+function timelineHTML(d) {
+  const today = todayISO();
+  const dated = d.key_dates.filter(k => k.date).map(k => ({ id: k.id, label: DATE_LABELS[k.id] || k.label, date: k.date, src: k.src })).sort((a, b) => a.date < b.date ? -1 : 1);
+  const unknown = d.key_dates.filter(k => !k.date);
+  const steps = []; let placed = false;
+  dated.forEach(i => { if (!placed && i.date > today) { steps.push({ today: true }); placed = true; } steps.push(i); });
+  if (!placed && dated.length) steps.push({ today: true });
+  const li = s => {
+    if (s.today) return `<li class="tl-i today"><span class="dot"></span><span class="tl-l">Today</span><b class="tl-d">${fmtDate(today)}</b></li>`;
+    const key = s.id === "comments_close", n = daysUntil(s.date);
+    return `<li class="tl-i ${s.date < today ? "past" : "next"}${key ? " key" : ""}"><span class="dot"></span><span class="tl-l">${esc(s.label)}</span><b class="tl-d">${fmtDate(s.date)}</b>${key ? `<span class="tl-n${n <= 7 ? " low" : ""}">${daysText(n)}</span>` : ""}<span class="rs">${esc(s.src || "Source not given")}</span></li>`;
+  };
+  return (steps.length ? `<ol class="tl">${steps.map(li).join("")}</ol>` : "") +
+    unknown.map(u => `<p class="tl-unk">${esc(DATE_LABELS[u.id] || u.label)}: not stated in the documents</p>`).join("");
+}
+function renderGlance(d, ctx) {
+  const pts = pointsOf(d);
+  const fromDocs = pts.filter(p => p.basis === "stated").length;
+  const pct = pts.length ? Math.round(fromDocs / pts.length * 100) : 0;
+  const nbi = d.stakeholders.neighbours.impacts;
+  const covs = Object.keys(TOPICS).map(t => ({ t, ev: nbi[t]?.evidence || "none" }));
+  const nStrong = covs.filter(c => c.ev === "strong").length, nNone = covs.filter(c => c.ev === "none").length;
+  const miss = (d.missing_items || []).length;
+  const close = d.key_dates.find(x => x.id === "comments_close" && x.date);
+  const left = close ? daysUntil(close.date) : null;
+  let readTile = "";
+  if (ctx && ctx.pagesTotal) {
+    const out = (ctx.omitted || []).reduce((n, x) => n + (x.to - x.from + 1), 0);
+    readTile = `<div class="g-tile${out ? " low" : ""}"><b>${ctx.pagesTotal - out} of ${ctx.pagesTotal}</b><span>pages read${out ? ", the rest were too long to read" : ""}</span></div>`;
+  }
+  const tile = (n, label, cls) => `<div class="g-tile${cls ? " " + cls : ""}"><b>${n}</b><span>${label}</span></div>`;
+  $("g-stats").innerHTML =
+    tile(pts.length, "points, each with a page reference") +
+    tile(pct + "%", "from the documents, the rest is our reading") +
+    tile(nStrong + " of " + covs.length, "topics well covered", nStrong ? "good" : "") +
+    tile(nNone, nNone === 1 ? "topic not covered" : "topics not covered", nNone ? "low" : "") +
+    tile(miss, miss === 1 ? "thing not in the application" : "things not in the application", miss ? "low" : "") +
+    (left === null ? "" : tile(left > 0 ? left : "Closed", left > 0 ? "days left to comment" : "comments", left > 7 ? "good" : "low")) +
+    readTile;
+  $("glance-sub").textContent = ctx && ctx.example ? "From the fictional example." : "A summary of this report. Open the sections below for the detail.";
+
+  $("g-dates").innerHTML = timelineHTML(d);
+  $("g-checked").textContent = $("checked").textContent;
+
+  const facts = d.overview.headline_facts || [];
+  $("g-facts").innerHTML = facts.length
+    ? `<ul class="kf">${facts.map(f => `<li><span class="k">${esc(f.label)}</span><span class="v">${figs(f.value)}</span><span class="rs">${esc(f.src || "Source not given")}</span></li>`).join("")}</ul>`
+    : `<p class="smallnote">No key facts were found in the documents.</p>`;
+
+  $("g-cov").innerHTML = covs.map(c => `<div class="cv-row"><span class="cv-n">${TOPICS[c.t]}</span><span class="cv-bar cv-${c.ev}" aria-hidden="true"><i></i></span><span class="cv-l ${c.ev}">${COVERAGE[c.ev]}</span></div>`).join("");
+
+  const by = {};
+  pts.forEach(p => docNames(p.src).forEach(n => { by[n] = (by[n] || 0) + 1; }));
+  let rows = Object.entries(by).sort((a, b) => b[1] - a[1]);
+  if (rows.length > 7) { const rest = rows.slice(6).reduce((n, r) => n + r[1], 0); rows = rows.slice(0, 6).concat([["Other documents", rest]]); }
+  const max = Math.max(1, ...rows.map(r => r[1]));
+  const rd = pts.length - fromDocs;
+  $("g-src").innerHTML = pts.length
+    ? `<div class="split" role="img" aria-label="${fromDocs} points from the documents, ${rd} our reading"><i class="docs" style="width:${pct}%"></i><i class="rd" style="width:${100 - pct}%"></i></div>
+       <div class="split-key"><span><i class="sw docs"></i>From the documents <b>${fromDocs}</b></span><span><i class="sw rd"></i>Our reading <b>${rd}</b></span></div>
+       <div class="byd">${rows.map(r => `<div class="byd-row"><span class="byd-n">${esc(r[0])}</span><span class="byd-bar" aria-hidden="true"><i style="width:${Math.round(r[1] / max * 100)}%"></i></span><span class="byd-c">${r[1]}</span></div>`).join("")}</div>`
+    : `<p class="smallnote">No points with a page reference were found.</p>`;
+}
+
+// ---------- Save to my list ----------
+const SAVE_KEY = "planify.saved.v1", SAVE_MAX = 12;
+function loadSaved() { try { const v = JSON.parse(localStorage.getItem(SAVE_KEY) || "[]"); return Array.isArray(v) ? v : []; } catch { return []; } }
+function writeSaved(list) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(list)); return true; } catch { return false; } }
+const appId = d => ((d.overview.reference || "") + "|" + (d.overview.address || d.overview.name || "")).toLowerCase();
+function actMsg(text, err) { const m = $("act-msg"); m.textContent = text || ""; m.classList.toggle("err", !!err); }
+function actionsReset(d, ctx) {
+  const saved = loadSaved().some(x => x.id === appId(d));
+  $("save-btn").hidden = !!ctx.example;
+  $("save-btn").textContent = saved ? "Saved to my list" : "Save to my list";
+  $("save-btn").disabled = saved && !!ctx.saved;
+  actMsg(ctx.saved ? "A saved copy. To ask questions about it, analyse the documents again." : "");
+  if (ctx.saved) { $("chat-launch").hidden = true; $("addr-launch").classList.add("addr-off"); }
+}
+$("save-btn").addEventListener("click", () => {
+  if (RC.example) return;
+  const list = loadSaved().filter(x => x.id !== appId(R));
+  const entry = { id: appId(R), savedAt: new Date().toISOString(), name: R.overview.address || R.overview.name || "Planning application", ref: R.overview.reference || "",
+    data: R, ctx: { omitted: RC.omitted || [], unreadable: RC.unreadable || [], pagesTotal: RC.pagesTotal || 0 } };
+  list.unshift(entry);
+  if (!writeSaved(list.slice(0, SAVE_MAX))) { actMsg("Couldn't save. This browser isn't letting the page store anything.", true); return; }
+  $("save-btn").textContent = "Saved to my list";
+  actMsg("Saved in this browser. It appears on the first page.");
+});
+function renderSaved() {
+  const list = loadSaved();
+  $("saved-sec").hidden = !list.length;
+  $("saved-list").innerHTML = list.map(x => `<li class="saveditem"><button type="button" class="open" data-open="${esc(x.id)}"><b>${esc(x.name)}</b><span class="rf">${esc(x.ref || "No application number found")}</span><span>Saved ${esc(fmtDate(x.savedAt.slice(0, 10)))}</span></button><button type="button" class="rmv" data-rm="${esc(x.id)}" aria-label="Remove ${esc(x.name)} from my list">Remove</button></li>`).join("");
+}
+$("saved-list").addEventListener("click", e => {
+  const o = e.target.closest("[data-open]"), r = e.target.closest("[data-rm]");
+  if (o) {
+    const x = loadSaved().find(y => y.id === o.dataset.open);
+    if (!x) return;
+    renderResults(x.data, Object.assign({ example: false, saved: true }, x.ctx));
+    show("results");
+    actionsReset(x.data, { saved: true });
+  } else if (r) {
+    writeSaved(loadSaved().filter(y => y.id !== r.dataset.rm));
+    renderSaved();
+  }
+});
+renderSaved();
+
+// ---------- Download PDF ----------
+async function downloadPdf() {
+  const J = window.jspdf && window.jspdf.jsPDF;
+  if (!J) { actMsg("The PDF tool didn't load. Check your connection and try again.", true); return; }
+  const d = R, o = d.overview;
+  const doc = new J({ unit: "mm", format: "a4" });
+  const M = 16, CW = 210 - 2 * M, BOTTOM = 297 - 18;
+  let y = M;
+  const clean = s => String(s == null ? "" : s).replace(/[‘’′]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, "-").replace(/…/g, "...").replace(/ /g, " ").replace(/[^\x00-\xFF]/g, "?");
+  const put = (t, size, style, color, after, font, indent) => {
+    doc.setFont(font || "helvetica", style || "normal"); doc.setFontSize(size); doc.setTextColor(...(color || [40, 36, 30]));
+    const lh = size * 0.42 + 1.1, x = M + (indent || 0);
+    doc.splitTextToSize(clean(t), CW - (indent || 0)).forEach(l => { if (y + lh > BOTTOM) { doc.addPage(); y = M; } doc.text(l, x, y + size * 0.3); y += lh; });
+    y += after || 0;
+  };
+  const head = t => { y += 4; if (y + 12 > BOTTOM) { doc.addPage(); y = M; } put(t, 13, "bold", [53, 80, 48], 2); };
+  const point = s => {
+    const x = srcText(s.src);
+    put((s.basis === "stated" ? "From the documents: " : "Our reading: ") + s.t, 10, "normal", [40, 36, 30], 0.2, "helvetica", 3);
+    put(x.text, 8, "normal", [110, 100, 85], 2.2, "courier", 3);
+  };
+  put("Planify", 9, "bold", [53, 80, 48], 1);
+  put(o.address || o.name || "Planning application", 18, "bold", [40, 36, 30], 1);
+  put("Planning application number: " + (o.reference || "not found in the documents"), 9, "normal", [110, 100, 85], 3, "courier");
+  put(o.one_liner || "", 11, "normal", [40, 36, 30], 2);
+  (o.headline_facts || []).forEach(f => { put(f.label + ": " + f.value, 10, "bold", [40, 36, 30], 0); put(f.src || "Source not given", 8, "normal", [110, 100, 85], 1.5, "courier", 3); });
+
+  head("Key dates");
+  d.key_dates.forEach(k => { put((DATE_LABELS[k.id] || k.label) + ": " + (k.date ? fmtDate(k.date) : "not stated in the documents") + (k.id === "comments_close" && k.date ? " (" + daysText(daysUntil(k.date)) + ")" : ""), 10, "normal", [40, 36, 30], 0); if (k.date) put(k.src || "Source not given", 8, "normal", [110, 100, 85], 1.5, "courier", 3); });
+
+  if (d.home && !d.home.sample) {
+    head("Your address");
+    put((d.home.address || d.home.postcode || "") + (d.home.summary ? ": " + d.home.summary : ""), 10, "normal", [40, 36, 30], 1);
+  }
+
+  head("Topic by topic");
+  Object.keys(TOPICS).forEach(t => {
+    const imp = d.stakeholders.neighbours.impacts[t];
+    put(TOPICS[t] + " (" + COVERAGE[imp.evidence] + ")", 11, "bold", [40, 36, 30], 0.5);
+    if (imp.summary) put(imp.summary, 10, "italic", [90, 82, 70], 0.5);
+    imp.statements.forEach(point);
+    (d.home?.statements || []).filter(s => s.topic === t).forEach(s => point({ basis: s.basis, t: "For your address: " + s.t, src: s.src }));
+    y += 1;
+  });
+
+  if ((d.also_covered || []).length) {
+    head("Also in the documents");
+    d.also_covered.forEach(a => { put(a.topic, 11, "bold", [40, 36, 30], 0.5); a.statements.forEach(point); y += 1; });
+  }
+  if ((d.differences || []).length) {
+    head("Where the documents disagree");
+    d.differences.forEach(x => { put(x.what + ": " + x.versions, 10, "normal", [40, 36, 30], 0); put(x.src || "", 8, "normal", [110, 100, 85], 2, "courier", 3); });
+  }
+  head("Not in the application");
+  if ((d.missing_items || []).length) d.missing_items.forEach(m => { put(m.item, 10, "bold", [138, 90, 0], 0); put(m.why_it_matters, 10, "normal", [40, 36, 30], 2, "helvetica", 3); });
+  else put("No expected reports were found to be missing.", 10, "normal", [40, 36, 30], 1);
+
+  const n = doc.getNumberOfPages();
+  for (let i = 1; i <= n; i++) {
+    doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(110, 100, 85);
+    doc.text(clean(RC.example ? "Fictional example. All names, places, documents and page numbers are invented." : "Made with Planify from the documents added. It can make mistakes. Check the cited pages."), M, 297 - 9);
+    doc.text(i + " / " + n, 210 - M, 297 - 9, { align: "right" });
+  }
+  const slug = String(o.reference || o.address || o.name || "report").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "report";
+  const filename = "Planify-" + slug + ".pdf";
+  let dl = null;
+  try { dl = await window.claude?.use?.("downloads"); } catch {}
+  if (dl) {
+    try { await dl.save({ filename, data: doc.output("blob") }); actMsg("PDF ready."); }
+    catch (e) { if (e && e.code !== "declined") actMsg("Couldn't save the PDF here.", true); }
+  } else { doc.save(filename); actMsg("PDF downloaded."); }
+}
+$("pdf-btn").addEventListener("click", () => { actMsg("Making the PDF…"); setTimeout(() => downloadPdf().catch(() => actMsg("Couldn't make the PDF.", true)), 20); });
+
 show("upload");
 
 // ---------- Upload ----------
@@ -1813,17 +2245,25 @@ function topicRow(h, t) {
   const real = x => x && x.src && !/not mentioned/i.test(x.src);
   const nbs = (nb?.statements || []).filter(real);
   const hs = h ? h.statements.filter(s => s.topic === t) : [];
-  const line = (tg, text, src) => { const x = srcText(src); return `<div class="tline"><div class="tw">${tg}</div><p>${esc(text)}</p><span class="rs${x.gone ? " gone" : ""}">${esc(x.text)}</span></div>`; };
-  const asLines = list => list.map(s => line(tag(s.basis), s.t, s.src)).join("");
-  let shown = [], more = [], eyebrow = "", note = "", body = "";
-  if (st === "rep" || st === "none") { shown = hs; more = nbs; eyebrow = "Around the site, for neighbours generally"; }
-  else if (nbs.length) { shown = nbs.slice(0, 1); more = nbs.slice(1); if (h) note = STATE_HELP.area; }
-  body = shown.length ? asLines(shown) : line("", h ? "The documents don't cover this for your address." : "The documents don't cover this.", "(not mentioned)");
-  const extra = more.filter(m => !shown.some(s => s.t === m.t));
-  const toggle = extra.length ? `<details class="tmore"><summary>Show ${extra.length} more ${extra.length === 1 ? "statement" : "statements"}</summary>${eyebrow ? `<span class="eyebrow">${esc(eyebrow)}</span>` : ""}${asLines(extra)}</details>` : "";
-  return `<div class="trow" id="topic-${t}"><div class="tp">${topicPic(t)}<span>${TOPICS[t]}</span></div>
-    <div class="tdetail">${body}${note ? `<p class="tnote">${esc(note)}</p>` : ""}${toggle}</div>
-    <div class="tstat"><span class="chip chip-${st}">${STATE_LABEL[st]}</span>${!h ? meter(nb ? nb.evidence : "none") : ""}</div></div>`;
+  const local = st === "rep" || st === "none";
+  const covered = st === "strong" || st === "partial" || st === "rep" || st === "none" || st === "area";
+  let mainDone = false;
+  const line = s => {
+    const x = srcText(s.src);
+    let cls = lowSignal(s.t) ? "amb" : "";
+    if (!cls && !mainDone && covered && s.basis === "stated") { cls = "grn"; mainDone = true; }
+    return `<div class="tline"><div class="tw">${tag(s.basis)}</div><p>${hl(s.t, cls)}</p><span class="rs${x.gone ? " gone" : ""}">${esc(x.text)}</span></div>`;
+  };
+  const gapLine = `<div class="tline"><p>${hl(h ? "The documents don't cover this for your address." : "The documents don't cover this.", "amb")}</p><span class="rs gone">${esc(srcText("(not mentioned)").text)}</span></div>`;
+  const first = local ? hs : nbs;
+  const second = local ? nbs.filter(m => !hs.some(s => s.t === m.t)) : [];
+  let body = first.length ? first.map(line).join("") : gapLine;
+  if (second.length) body += `<span class="tsub">Around the site, for neighbours generally</span>` + second.map(line).join("");
+  const note = h && st === "area" ? `<p class="tnote">${esc(STATE_HELP.area)}</p>` : "";
+  const sumRaw = local ? (hs[0]?.t || "") : (nb?.summary || nbs[0]?.t || "");
+  const sumText = sumRaw ? firstSentence(sumRaw) : (h ? "The documents don't cover this for your address." : "The documents don't cover this.");
+  const sumCls = !sumRaw || !covered || lowSignal(sumText) ? "amb" : "grn";
+  return `<div class="trow" id="topic-${t}"><details class="tdd tdd-${st}"><summary><span class="tp">${topicPic(t)}<span class="tname">${TOPICS[t]}</span></span><span class="tsum">${hl(sumText, sumCls)}</span><span class="tstat"><span class="chip chip-${st}">${STATE_LABEL[st]}</span>${!h ? meter(nb ? nb.evidence : "none") : ""}</span></summary><div class="tbody">${body}${note}</div></details></div>`;
 }
 function renderHome(h) {
   const topics = Object.keys(TOPICS);
@@ -1834,7 +2274,7 @@ function renderHome(h) {
     $("h-home").textContent = "What the documents cover, topic by topic";
     $("home-sub").textContent = "";
     $("home-chips").innerHTML = ["strong", "partial", "nocov"].map(k => { const n = states.filter(x => x === k).length; return n ? `<span class="chip chip-${k}">${n} ${STATE_LABEL[k].toLowerCase()}</span>` : ""; }).join("");
-    box.innerHTML = `<div class="trows">${topics.map(t => topicRow(h, t)).join("")}</div>`;
+    box.innerHTML = `<div class="dd-tools"><button type="button" data-ddall="open">Open all topics</button>&nbsp;&nbsp;<button type="button" data-ddall="close">Close all</button></div><div class="trows">${topics.map(t => topicRow(h, t)).join("")}</div>`;
     return;
   }
   const where = h.address || h.postcode || "your address";
@@ -1861,7 +2301,7 @@ function renderHome(h) {
   const named = !!h.statements.length;
   const facts = h.is_site ? [["Distance (approx)", "On the site", "Your address is the application site"], ["Direction", "Not applicable", "The works are at your address"]] : [
     ["Distance (approx)", h.distance_m != null ? fmtDist(h.distance_m) : "Not worked out", h.distance_m != null ? (h.estimated ? "Estimated by Claude, may be a few hundred metres out" : "Straight line to the site") : h.locErr === "net" ? "The location lookup couldn\u2019t be reached" + (h.locWhy ? " (" + h.locWhy + ")" : "") : h.locErr === "site" ? "The site\u2019s location couldn\u2019t be found from the documents" : "Your address couldn\u2019t be located"],
-    ["Direction", h.distance_m != null && h.direction ? "The site is " + h.direction : h.distance_m != null ? "Next door" : "Not worked out", "From your home"]
+    dirFact(h)
   ];
   const map = "";
   let html = `<section class="addr-sec" aria-labelledby="h-addr"><span class="eyebrow">Your address</span><h2 id="h-addr">${esc(where)}</h2>
