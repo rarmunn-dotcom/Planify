@@ -765,8 +765,11 @@ details.howto > .legend { margin-top: 14px; }
 .pv-nav { display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
 .pv-nav button { font: inherit; padding: 4px 10px; border: 1px solid #e7dec9; border-radius: 8px; background: #fffdf8; cursor: pointer; }
 #draw-dlg { width: min(1200px, 96vw); }
-#draw-dlg .dlg-body img { width: 100%; max-width: 100%; }
-@media (max-width: 640px) { #draw-dlg .dlg-body img { width: 100%; } }
+#draw-dlg .dlg-body { display: grid; place-items: center; background: #f4f0e6; }
+#draw-dlg .dlg-body img { width: auto; height: auto; max-width: 100%; max-height: calc(94vh - 70px); cursor: zoom-in; background: #fff; }
+#draw-dlg .dlg-body.zoom { place-items: start; }
+#draw-dlg .dlg-body.zoom img { max-width: none; max-height: none; width: min(2200px, 220vw); cursor: zoom-out; }
+
 @media print { #alldocs-sec { display: none; } }
 .dfig { margin: 0; display: grid; gap: 10px; align-content: start; background: #fffdf8; border: 1px solid #e7dec9; border-radius: 16px; padding: 12px; min-width: 0; }
 .dfig .dimg { display: block; width: 100%; padding: 0; border: 1px solid #e7dec9; border-radius: 10px; background: #fff; cursor: zoom-in; overflow: hidden; aspect-ratio: 4 / 3; }
@@ -782,8 +785,6 @@ details.howto > .legend { margin-top: 14px; }
 #draw-dlg::backdrop { background: rgba(30, 28, 24, .6); }
 #draw-dlg .dlg-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e7dec9; position: sticky; top: 0; background: #fff; }
 #draw-dlg .dlg-body { overflow: auto; max-height: calc(94vh - 52px); max-width: 96vw; }
-#draw-dlg .dlg-body img { display: block; width: min(1600px, 160vw); max-width: none; }
-@media (max-width: 640px) { #draw-dlg .dlg-body img { width: 220vw; } }
 @media print { #drawings-sec { display: none; } }
 </style>
 
@@ -915,7 +916,7 @@ details.howto > .legend { margin-top: 14px; }
 
     <dialog id="draw-dlg" aria-label="Document preview">
       <div class="dlg-top"><strong id="pv-title"></strong>
-        <span class="pv-nav"><button type="button" id="pv-prev" aria-label="Previous page">&larr;</button> <span id="pv-pg"></span> <button type="button" id="pv-next" aria-label="Next page">&rarr;</button> <button type="button" id="pv-close">Close</button></span>
+        <span class="pv-nav"><button type="button" id="pv-prev" aria-label="Previous page">&larr;</button> <span id="pv-pg"></span> <button type="button" id="pv-next" aria-label="Next page">&rarr;</button> <button type="button" id="pv-zoom">Zoom in</button> <button type="button" id="pv-close">Close</button></span>
       </div>
       <div class="dlg-body" id="pv-body"></div>
     </dialog>
@@ -1684,6 +1685,7 @@ async function renderDocList(my) {
 let pv = null;
 async function pvShow() {
   const { d, page } = pv, body = $("pv-body");
+  pvZoom(false);
   $("pv-title").textContent = pv.title;
   $("pv-pg").textContent = "Page " + page + " of " + d.pages;
   $("pv-prev").disabled = page <= 1; $("pv-next").disabled = page >= d.pages;
@@ -1695,7 +1697,14 @@ async function pvShow() {
     body.innerHTML = `<img alt="${esc(pv.title)}, page ${page}" src="${d.pv[page]}">`;
   } catch (e) { body.textContent = "This page couldn’t be shown."; }
 }
+function pvZoom(on) {
+  const b = $("pv-body"); b.classList.toggle("zoom", on);
+  $("pv-zoom").textContent = on ? "Fit to screen" : "Zoom in";
+}
+$("pv-zoom").addEventListener("click", () => pvZoom(!$("pv-body").classList.contains("zoom")));
+$("pv-body").addEventListener("click", e => { if (e.target.tagName === "IMG") pvZoom(!$("pv-body").classList.contains("zoom")); });
 function openPreview(d, n, title) {
+  pvZoom(false);
   pv = { d, page: n || 1, title: title || docTitle(d) };
   const dlg = $("draw-dlg");
   if (!dlg.open) dlg.showModal();
@@ -1876,10 +1885,16 @@ function makeProxySample(url) {
     try { return JSON.parse(t.slice(a, b + 1)); } catch { throw fail("invalid_json"); }
   };
   return {
-    async limits() { return { maxPromptBytes: 262144 }; },
+    async limits() { return { maxPromptBytes: 262144, images: { maxCount: 3, mediaTypes: ["image/jpeg"] } }; },
     async json(prompt, opts = {}) {
       let res;
-      try { res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt }), signal: opts.signal }); }
+      const images = [];
+      for (const bl of (opts.images || [])) {
+        const bytes = new Uint8Array(await bl.arrayBuffer()); let bin = "";
+        for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
+        images.push(btoa(bin));
+      }
+      try { res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt, images }), signal: opts.signal }); }
       catch (e) { throw fail(e?.name === "AbortError" ? "cancelled" : "upstream_error"); }
       if (!res.ok) throw fail(res.status === 429 ? "rate_limited" : res.status === 413 ? "prompt_too_large" : "upstream_error");
       const reader = res.body.getReader(), dec = new TextDecoder();
